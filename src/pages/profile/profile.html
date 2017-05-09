@@ -1,0 +1,117 @@
+<!--
+  Generated template for the Profile page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='navbarColor'>
+    <ion-title>{{ 'PERFIL' | translate }}</ion-title>
+  
+		<ion-buttons end>
+			<button ion-button icon-only (click)="openModal()">
+				Guardar &nbsp;
+			</button>
+		</ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+	<button no-padding ion-item  (click)="onSelectPlan(0)">
+		Free Plan
+	</button>  
+
+	<ion-list>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'NOMBRE' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'APELLIDO' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'TELEFONO' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'PAIS' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'COMPANIA' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'PUESTO_DE_TRABAJO' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding style="margin-top: 10px;">
+			<ion-label>{{ 'USO_MUSIC_JUGGLE_PARA' | translate }}</ion-label>
+			<ion-select [(ngModel)]="gaming" interface="popover">
+				<ion-option value="nes">Opción 1</ion-option>
+				<ion-option value="n64">Opción 2</ion-option>
+				<ion-option value="ps">Opción 3</ion-option>
+				<ion-option value="genesis">Opción 4</ion-option>
+			</ion-select>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'CANTIDAD_DE_PRODUCCIONES_POR_ANO' | translate }}</ion-label>
+			<ion-input type="number" value=""></ion-input>
+		</ion-item>
+	
+	</ion-list>
+	
+	<ion-list no-lines>
+		
+		<h5>{{ 'MIS_PRODUCCIONES_SON' | translate }}</h5>
+
+		<ion-item no-padding>
+			<ion-label>{{ 'AV_PRODUCCIONES' | translate }}</ion-label>
+			<ion-toggle></ion-toggle>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label>{{ 'TV_PRODUCCIONES' | translate }}</ion-label>
+			<ion-toggle></ion-toggle>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label>{{ 'FILMS' | translate }}</ion-label>
+			<ion-toggle ></ion-toggle>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label>{{ 'RADIO' | translate }}</ion-label>
+			<ion-toggle ></ion-toggle>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'OTRA' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+	</ion-list>
+
+	<hr>
+
+	<button ion-button block>{{ 'GUARDAR' | translate }}</button>
+
+
+</ion-content>

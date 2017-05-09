@@ -1,0 +1,61 @@
+page-intro {
+
+    ion-slide {
+      background-color: #fff;
+    }
+ 	
+ 	/*
+    ion-slide img {
+      height: 70vh !important;
+      width: auto !important;
+    }
+	*/
+    .mj-logo{
+    	max-height: 20vh !important;
+    	/*margin-top: 200px;*/
+    	margin-top: 3vh;
+    	margin-bottom: 5vh;
+    	z-index: 100;
+    	position: relative;    }
+
+    .mj-fondo{
+    	max-height: 50vh !important;
+    	
+    	width: auto !important;
+    	/*margin-top: 200px;*/
+    }
+    .mj-fondo{
+    	max-height: 50vh !important;	
+    	width: auto !important;
+    	/*margin-top: 200px;*/
+    }
+
+    .mj-fondo2{
+	    width: 100% !important;
+	    top: -14vh;
+	    position: relative;
+	    z-index: 1;
+    }
+
+    .mj-fondo3{
+	    width: 100% !important;
+	    top: 0vh;
+    	position: absolute;
+	    z-index: 1;
+	    right: 0px;
+    }
+
+    .omitir{
+    	position: relative;
+    	z-index: 120
+    }
+
+    .slide-zoom{
+    	height: 100vh;
+    }
+
+    .text-slide-2{
+    	top: -13vh;
+    	position: relative;
+    }
+}

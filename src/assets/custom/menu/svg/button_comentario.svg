@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="336px" height="43px" viewBox="0 0 336 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Diseño-visual-ok" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Cotización-Esperando" transform="translate(-20.000000, -168.000000)">
+            <g id="button" transform="translate(20.000000, 168.000000)">
+                <g>
+                    <rect id="Rectangle" fill="#F24052" x="0" y="0" width="336" height="43" rx="6"></rect>
+                    <text id="Empezar" font-family="Cera-Medium, Cera" font-size="18" font-weight="400" fill="#FFFFFF">
+                        <tspan x="79.908" y="27.5">Hacer un comentario</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

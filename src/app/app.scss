@@ -1,0 +1,164 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+
+.title.title-md {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 70%;
+    text-align: center;
+}
+
+.title-2{
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title-3{
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title-4{
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.text-4{
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
+
+}
+
+.text-rojo{
+    color: #f53555 !important
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+ion-icon {
+    &[class*="mj-"] {
+        // Instead of using the font-based icons
+        // We're applying SVG masks
+        mask-size: contain;
+        mask-position: 50% 50%;
+        mask-repeat: no-repeat;
+        background: currentColor;
+        width: 1em;
+        height: 1em;
+    }
+    // custom icons
+    &[class*="mj-history-icon"] {
+        mask-image: url(../assets/custom/menu/svg/historial_ON.svg);
+    }
+    &[class*="mj-profile-icon"] {
+        mask-image: url(../assets/custom/menu/svg/perfil_ON.svg);
+    }
+    &[class*="mj-listen-icon"] {
+        mask-image: url(../assets/custom/menu/svg/escucha_ON.svg);
+    }
+    &[class*="mj-contact-icon"] {
+        mask-image: url(../assets/custom/menu/svg/contacto_ON.svg);
+    }
+    &[class*="mj-more-icon"] {
+        mask-image: url(../assets/custom/menu/svg/mas_ON.svg);
+    }
+    &[class*="mj-reconocimiento-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/reconocimientoMusica_icon.svg);
+    }
+    &[class*="mj-informacion-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/informacionCompCancion_icon.svg);
+    }
+    &[class*="mj-cotizacion-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/pedidoCotizacion_icon.svg);
+    }
+    &[class*="mj-consultas-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/consultasGenerales_icon.svg);
+    }
+    &[class*="mj-comentarios-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/agregarComent_icon.svg);
+    }
+    &[class*="mj-gestion-licencias-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/free/svg/gestionLicencias_icon.svg);
+    }
+    &[class*="mj-usuario-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/corporate/svg/usuarioAdministrador_icon.svg);
+    }
+    &[class*="mj-compartir-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/corporate/svg/compartirInfoEquipo_icon.svg);
+    }
+    &[class*="mj-usuarios-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/corporate/svg/multiplesUsuarios_icon.svg);
+    }
+    &[class*="mj-llamadas-icon"] {
+        mask-image: url(../assets/custom/seleccion_plan/corporate/svg/llamadasDirect_icon.svg);
+    }
+
+
+}
+
+.well{
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: #ddd 0px 0px 8px 1px;       
+}
+
+
+.button-block{
+      border-radius: 9px !important;
+      font-weight: 600;
+}
+
+.text-grey{
+    color: #888;
+
+}
+
+ion-badge{
+    border-radius: 4px !important;
+}
+
+.d1{
+    border-left: solid 3px #f53555;
+    margin-bottom: 20px;
+    display: table;
+}
+
+.d1 > p{
+    margin: 10px 0px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #e63d58 !important;
+}
+
+.swiper-pagination-bullet{
+    background: rgb(255, 0, 42);
+}
