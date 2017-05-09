@@ -7,6 +7,7 @@ import { WorkWithUs } from '../work-with-us/work-with-us';
 import { SelectPlan } from '../select-plan/select-plan';
 import { Terms } from '../terms/terms';
 import { Recomendations } from '../recomendations/recomendations';
+import { Register } from '../register/register';
 
 
 /**
@@ -28,6 +29,7 @@ export class More {
 	topTen 	=  TopTen;
 	selectPlan 	=  SelectPlan;
 	recomendations 	=  Recomendations;
+  register   =  Register;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -50,6 +52,10 @@ export class More {
 
   openTerms(){
     this.navCtrl.push(this.terms);
+  }
+
+  openRegister(){
+    this.navCtrl.push(this.register);
   }
 
   openRecomendations(id){

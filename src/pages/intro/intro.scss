@@ -47,7 +47,8 @@ page-intro {
 
     .omitir{
     	position: relative;
-    	z-index: 120
+    	z-index: 120;
+    	font-size: 1.5rem;
     }
 
     .slide-zoom{
@@ -57,5 +58,11 @@ page-intro {
     .text-slide-2{
     	top: -13vh;
     	position: relative;
+    }
+
+    .text-slide-3{
+    	top: 63vh;
+    	position: relative;
+    	z-index: 220
     }
 }

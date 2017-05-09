@@ -15,7 +15,7 @@
 
 
 	<ion-fab right bottom>
-		<button ion-fab><ion-icon name="arrow-forward"></ion-icon></button>
+		<button ion-fab (click)="goToSlide(1)"><ion-icon name="arrow-forward"></ion-icon></button>
 	</ion-fab>
 
   </ion-slide>
@@ -36,7 +36,7 @@
 	 </div>
 
 	<ion-fab right bottom>
-		<button ion-fab><ion-icon name="arrow-forward"></ion-icon></button>
+		<button ion-fab (click)="goToSlide(2)"><ion-icon name="arrow-forward"></ion-icon></button>
 	</ion-fab>
 
   </ion-slide>
@@ -49,13 +49,17 @@
   	
     <img src="/assets/custom/tutorial_screen/fondo_tutorial_3@3x.png.png" class="mj-fondo3" />
     
-    <div class="text-slide-2">
+    <div class="text-slide-3" padding-right padding-left>
 	    Conseguí la licencia.
+	    <br>
+	    <button ion-button round full icon-right (click)="goToHome()">
+	    	Empezar <ion-icon name="arrow-forward"></ion-icon>
+	    </button>
 	 </div>
 
-	<ion-fab right bottom>
-		<button ion-fab><ion-icon name="arrow-forward"></ion-icon></button>
-	</ion-fab>
+	
+		
+	
 
   </ion-slide>
  

@@ -4,15 +4,49 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>register</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 
 <ion-content padding>
+
+	<img src="/assets/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>
+
+	
+	<button ion-button block outline class='facebook-login'>Conectate con Facebook</button>	
+
+	<h3> {{ 'CREA_TU_CUENTA' | translate }}</h3>
+
+	<ion-list>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'NOMBRE' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'EMPRESA' | translate }}</ion-label>
+			<ion-input type="text" value=""></ion-input>
+		</ion-item>
+
+		<ion-item no-padding>
+			<ion-label floating>{{ 'CONTRASENA' | translate }}</ion-label>
+			<ion-input type="password" value=""></ion-input>
+		</ion-item>
+
+
+
+		<button no-padding ion-item  (click)="onSelectPlan()">
+			Free Plan
+		</button>  
+	
+
+	</ion-list>
+
+	<button ion-button block>{{ 'CREAR CUENTA' | translate }}</button>
+
+	<p text-center>{{ 'YA_TIENES_CUENTA' | translate }} <strong><span (click)="openLogin()"> {{ 'INICIA_SESION' | translate }}</span></strong></p>
 
 </ion-content>

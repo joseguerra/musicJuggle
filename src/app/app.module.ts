@@ -27,6 +27,7 @@ import { WorkWithUs } from '../pages/work-with-us/work-with-us';
 import { Terms } from '../pages/terms/terms';
 import { Recomendations } from '../pages/recomendations/recomendations';
 import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
+import { Login } from '../pages/login/login';
 
 
 export function createTranslateLoader(http: Http) {
@@ -51,7 +52,8 @@ export function createTranslateLoader(http: Http) {
     Terms,
     Recomendations,
     ModalOutBudget,
-    Register
+    Register,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ export function createTranslateLoader(http: Http) {
     Terms,
     Recomendations,
     ModalOutBudget,
-    Register
+    Register,
+    Login
   ],
   providers: [
     StatusBar,
