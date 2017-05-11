@@ -6,13 +6,28 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>listen</ion-title>
+  <ion-navbar color='navbarColor'>
+    <ion-title>{{ 'ESCUCHA' | translate }}</ion-title>
   </ion-navbar>
 
+	<ion-toolbar>
+
+		<ion-searchbar
+		  [(ngModel)]="myInput"
+		  [showCancelButton]="true"
+		  (ionInput)="onInput($event)"
+		  (ionCancel)="onCancel($event)">
+		</ion-searchbar>
+
+	</ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
 
+	<div text-right>
+		<button ion-button icon-only small (click)="openSong()">
+			Compartir <ion-icon name="share"></ion-icon>
+		</button>	
+	</div>
 </ion-content>

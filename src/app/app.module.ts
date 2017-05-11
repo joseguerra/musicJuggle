@@ -10,6 +10,8 @@ import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
+
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -28,6 +30,7 @@ import { Terms } from '../pages/terms/terms';
 import { Recomendations } from '../pages/recomendations/recomendations';
 import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
 import { Login } from '../pages/login/login';
+import { Song } from '../pages/song/song';
 
 
 export function createTranslateLoader(http: Http) {
@@ -53,12 +56,14 @@ export function createTranslateLoader(http: Http) {
     Recomendations,
     ModalOutBudget,
     Register,
-    Login
+    Login,
+    Song
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
@@ -96,11 +101,13 @@ export function createTranslateLoader(http: Http) {
     Recomendations,
     ModalOutBudget,
     Register,
-    Login
+    Login,
+    Song
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    MediaPlugin, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

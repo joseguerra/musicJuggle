@@ -1,3 +1,12 @@
 page-glosary {
 
+	.details{
+		margin-top: 10px;
+		overflow: visible;
+    	white-space: initial;
+	}
+
+	.item-inner{
+		-webkit-align-items: flex-start !important;
+	}
 }

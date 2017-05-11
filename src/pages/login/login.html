@@ -28,7 +28,7 @@
 
 	</ion-list>
 
-	<button ion-button block>{{ 'INICIAR_SESION' | translate }}</button>
+	<button ion-button block (click)="goToProfile()">{{ 'INICIAR_SESION' | translate }}</button>
 
 	<p text-center>{{ 'NO_TIENES_CUENTA' | translate }} <strong><span (click)="openLogin()"> {{ 'REGISTRATE' | translate }}</span></strong></p>
 

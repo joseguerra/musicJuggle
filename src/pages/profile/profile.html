@@ -21,11 +21,12 @@
 
 <ion-content padding>
 
-	<button no-padding ion-item  (click)="onSelectPlan(0)">
-		Free Plan
-	</button>  
+
 
 	<ion-list>
+		<button ion-item no-padding  (click)="onSelectPlan(0)" detail-push>
+			Free Plan
+		</button>  
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'NOMBRE' | translate }}</ion-label>
@@ -63,7 +64,7 @@
 		</ion-item>
 
 		<ion-item no-padding style="margin-top: 10px;">
-			<ion-label>{{ 'USO_MUSIC_JUGGLE_PARA' | translate }}</ion-label>
+			<ion-label floating>{{ 'USO_MUSIC_JUGGLE_PARA' | translate }}</ion-label>
 			<ion-select [(ngModel)]="gaming" interface="popover">
 				<ion-option value="nes">Opción 1</ion-option>
 				<ion-option value="n64">Opción 2</ion-option>
@@ -109,7 +110,6 @@
 		</ion-item>
 	</ion-list>
 
-	<hr>
 
 	<button ion-button block>{{ 'GUARDAR' | translate }}</button>
 

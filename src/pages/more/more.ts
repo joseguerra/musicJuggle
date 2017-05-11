@@ -55,7 +55,7 @@ export class More {
   }
 
   openRegister(){
-    this.navCtrl.push(this.register);
+    this.navCtrl.setRoot(this.register);
   }
 
   openRecomendations(id){

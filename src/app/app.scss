@@ -129,12 +129,13 @@ ion-icon {
     box-shadow: #ddd 0px 0px 8px 1px;       
 }
 
-
+/*
 .button{
     border-radius: 9px !important;
     font-weight: 600;
-    padding: 22px 0px ;
+    padding: 22px 10px ;
 }
+*/
 
 .text-grey{
     color: #888;
@@ -162,4 +163,19 @@ ion-badge{
 
 .swiper-pagination-bullet{
     background: rgb(255, 0, 42);
+}
+
+.tab-button-text{
+    font-size: 1rem !important
+}
+
+.item-md[detail-push] .item-inner, button.item-md:not([detail-none]) .item-inner, a.item-md:not([detail-none]) .item-inner{
+    
+}
+
+.card-no-padding{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  border:none
 }

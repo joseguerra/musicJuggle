@@ -1,3 +1,30 @@
 page-top-ten {
 
+	.position{
+		position: absolute;
+	    top: 50%;
+	    left: 0;
+	    right: 0;
+	    transform: translate(0, -50%);
+	    text-align: center;
+	    color: white;
+	    font-weight: 800;
+	    font-size: 3rem;
+	}
+
+	.img{
+		display: block;
+		filter: brightness(0.6);
+
+	}
+
+	ion-thumbnail{
+		position: relative;
+    	display: inline-block;
+	}
+
+	.item-ios ion-thumbnail ion-img, .item-ios ion-thumbnail img {
+	    width: 80px;
+	    height: 80px;
+	}
 }

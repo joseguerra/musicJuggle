@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Song } from '../song/song';
 
 /**
  * Generated class for the Listen page.
@@ -14,11 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Listen {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	song =  Song;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Listen');
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad Listen');
+	}
+
+
+  openSong(id){
+    this.navCtrl.push(this.song);
   }
 
 }
