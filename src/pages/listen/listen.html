@@ -13,10 +13,9 @@
 	<ion-toolbar>
 
 		<ion-searchbar
-		  [(ngModel)]="myInput"
 		  [showCancelButton]="true"
-		  (ionInput)="onInput($event)"
-		  (ionCancel)="onCancel($event)">
+		  (search)="search($event)"
+		  placeholder="{{ 'BUSCAR_CANCIONES' | translate }}">
 		</ion-searchbar>
 
 	</ion-toolbar>

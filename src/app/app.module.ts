@@ -31,6 +31,7 @@ import { Recomendations } from '../pages/recomendations/recomendations';
 import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
 import { Login } from '../pages/login/login';
 import { Song } from '../pages/song/song';
+import { SearchResults } from '../pages/search-results/search-results';
 
 import {ListenProvider} from '../pages/listen/listen.provider';
 
@@ -58,13 +59,14 @@ export function createTranslateLoader(http: Http) {
     ModalOutBudget,
     Register,
     Login,
-    Song
+    Song,
+    SearchResults
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ionic2RatingModule,
+    Ionic2RatingModule,  
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
@@ -104,7 +106,8 @@ export function createTranslateLoader(http: Http) {
     ModalOutBudget,
     Register,
     Login,
-    Song
+    Song,
+    SearchResults
   ],
   providers: [
   ListenProvider,

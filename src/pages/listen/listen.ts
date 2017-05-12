@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Song } from '../song/song';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
-import {ListenProvider} from '../listen/listen.provider';
+import { ListenProvider } from '../listen/listen.provider';
+import { SearchResults } from '../search-results/search-results';
+
+
 /**
  * Generated class for the Listen page.
  *
@@ -16,11 +19,13 @@ import {ListenProvider} from '../listen/listen.provider';
   templateUrl: 'listen.html',
 })
 export class Listen {
-	file: MediaObject = this.media.create("myrecording.mp3");
-  	signature:string;
-  	timestamp: any;  
 	
-
+	file: MediaObject = this.media.create("myrecording.mp3");
+  	signature: string;
+  	timestamp: any; 
+  	song =  Song;
+  	searchResults = SearchResults; 
+	
 	constructor(public navCtrl: NavController,
 				public navParams: NavParams,
 				public media: MediaPlugin,
@@ -28,54 +33,62 @@ export class Listen {
 	}
 
 	ionViewDidEnter() {    
-      var current_data = new Date();
-      this.timestamp = current_data.getTime()/1000;    
+		var current_data = new Date();
+		this.timestamp = current_data.getTime()/1000;    
 
-      var stringToSign = this.buildStringToSign('POST','/v1/identify',
-      '3291ad69822f88e477bd738467abb585',
-      'audio',
-      '1',
-      this.timestamp);
-      
-      this.signature = this.sign(stringToSign,'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB');    
-      
-  }
+		var stringToSign = this.buildStringToSign('POST','/v1/identify',
+		'3291ad69822f88e477bd738467abb585',
+		'audio',
+		'1',
+		this.timestamp);
 
-   buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
-    return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
-  }
+		this.signature = this.sign(stringToSign,'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB');    
+	  
+	}
 
-  sign(signString, accessSecret) {
-    return crypto.createHmac('sha1', accessSecret)
-      .update(new Buffer(signString, 'utf-8'))
-      .digest().toString('base64');
-  }
+	buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
+		return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
+	}
 
-  openSong(){
-  	   this.file.startRecord();
-	    window.setTimeout(() => {
-	      this.file.stopRecord();
+	sign(signString, accessSecret) {
+		return crypto.createHmac('sha1', accessSecret)
+			.update(Buffer.from(signString)) 
+			.digest().toString('base64');
+	}
 
-	      var formData = {    
-		      sample:this.file,
-		      access_key:'3291ad69822f88e477bd738467abb585',
-		      data_type:'audio',
-		      signature_version:1,
-		      signature:this.signature,
-		      sample_bytes:1,
-		      timestamp:this.timestamp,
-		    }
+	openSong(){
 
-		    this.listen.register(formData).subscribe(
-		      data => {                        
-		        this.showAlert(JSON.stringify(data),"data");        
-		      },
-		      err => {        
-		        this.showAlert(err,"error");        
-		      }
-		    );
+		this.file.startRecord();
+		window.setTimeout(() => {
 
-	  }, 10000);
-  }
+			this.file.stopRecord();
+
+			var formData = {    
+			  sample:this.file,
+			  access_key:'3291ad69822f88e477bd738467abb585',
+			  data_type:'audio',
+			  signature_version:1,
+			  signature:this.signature,
+			  sample_bytes:1,
+			  timestamp:this.timestamp,
+			}
+
+
+			this.listen.register(formData).subscribe(
+			  data => {                        
+			    console.log(JSON.stringify(data),"data");
+			  },
+			  err => {        
+			    console.log(err,"error");        
+			  }
+			);
+
+		}, 10000);
+	}
+
+	search(query){
+
+		this.navCtrl.push(this.searchResults, {'query':query});
+	}
 
 }
