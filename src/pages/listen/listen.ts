@@ -3,7 +3,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Song } from '../song/song';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
-import {ListenProvider} from '../listen/listen.provider';
+import { ListenProvider } from '../listen/listen.provider';
+import { SearchResults } from '../search-results/search-results';
+
+
 /**
  * Generated class for the Listen page.
  *
@@ -16,11 +19,13 @@ import {ListenProvider} from '../listen/listen.provider';
   templateUrl: 'listen.html',
 })
 export class Listen {
-	file: MediaObject = this.media.create("myrecording.mp3");
-  	signature:string;
-  	timestamp: any;  
 	
-
+	file: MediaObject = this.media.create("myrecording.mp3");
+  	signature: string;
+  	timestamp: any; 
+  	song =  Song;
+  	searchResults = SearchResults; 
+	
 	constructor(public navCtrl: NavController,
 				public navParams: NavParams,
 				public media: MediaPlugin,
@@ -77,5 +82,11 @@ export class Listen {
 
 	  }, 10000);
   }
+
+
+	search(query){
+
+		this.navCtrl.push(this.searchResults, {'query':query});
+	}
 
 }

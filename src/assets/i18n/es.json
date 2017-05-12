@@ -75,8 +75,6 @@
   "INICIA_SESION": "Inicia Sesión",
   "NO_TIENES_CUENTA": "No tienes cuenta?",
   "EMPRESA": "Empresa",
-  "CONTRASENA": "Contraseña"
-
-
-  
+  "CONTRASENA": "Contraseña",
+  "BUSCAR_CANCIONES":"Buscar canciones"
 }
