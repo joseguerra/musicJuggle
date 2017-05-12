@@ -17,23 +17,23 @@
 
   <ion-card class="card-no-padding">
       
-      <img src="http://cdn.pcwallart.com/images/nirvana-nevermind-album-cover-wallpaper-2.jpg"/>
+      <img [src]="song?.album.images[0].url" />
       
-      <div text-right>
+      <div text-right class="container-1">
 	      <ion-card-content>
 	          <button ion-button small item-left icon-right (click)="openModal()">{{ 'COMPARTIR' | translate }} <ion-icon name="md-share"></ion-icon></button>
 	      </ion-card-content>
       </div>
 
-      <div padding>
+      <div padding class="container-2">
 
-	      <h1 class="titulo-cancion">Even FLow</h1>
+	      <h1 class="titulo-cancion">{{song?.name}}</h1>
 
-			<rating [(ngModel)]="rate" readOnly="true" val="3" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">4</rating>
+			<rating [(ngModel)]="song" readOnly="true" val="3" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">4</rating>
 
 	      <p class="text-info">
-	      	{{ 'ARTISTA' | translate }}: Pearl Jam <br>
-	      	{{ 'ALBUM' | translate }}: Disco 1 <br>
+	      	{{ 'ARTISTA' | translate }}: {{song?.artists[0].name}} <br>
+	      	{{ 'ALBUM' | translate }}: {{song?.album.name}} <br>
 	      	{{ 'ANO' | translate }}: 2009 <br>
 	      	{{ 'GENERO' | translate }}: Grounge <br>
 	      	ISRC JM K40 14  00212

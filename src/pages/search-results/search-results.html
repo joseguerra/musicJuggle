@@ -6,13 +6,27 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>searchResults</ion-title>
+  <ion-navbar color='navbarColor'>
+    <ion-title>{{ 'ESCUCHA' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-list>
+
+	<ion-item no-padding *ngFor="let song of songs" (click)="openSong(song.id)">
+		<ion-thumbnail item-left>
+			<img [src]="song.album.images[0].url" />
+		</ion-thumbnail>
+		<h2>{{song.name}}</h2>
+		
+		<p>{{ 'ALBUM' | translate }}: {{song.album.name}}</p>
+		<p>{{song.artists[0].name}}</p>
+	</ion-item>
+
+  </ion-list>
 
 </ion-content>
