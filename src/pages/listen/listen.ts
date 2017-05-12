@@ -68,10 +68,10 @@ export class Listen {
 
 		    this.listen.register(formData).subscribe(
 		      data => {                        
-		        this.showAlert(JSON.stringify(data),"data");        
+						console.log(data);
 		      },
 		      err => {        
-		        this.showAlert(err,"error");        
+		        console.log(err);     
 		      }
 		    );
 
