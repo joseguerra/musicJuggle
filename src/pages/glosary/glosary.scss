@@ -4,9 +4,20 @@ page-glosary {
 		margin-top: 10px;
 		overflow: visible;
     	white-space: initial;
+    	line-height: 2.3rem;	
 	}
 
 	.item-inner{
 		-webkit-align-items: flex-start !important;
+	}
+
+
+	ion-item{
+		
+    	padding-top: 14px !important;
+	}
+
+	strong{
+		text-transform: uppercase;
 	}
 }

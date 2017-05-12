@@ -19,7 +19,9 @@
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6><h4>{{ 'FREE_PLAN' | translate }}</h4></ion-col>
-			<ion-col col-6 text-right><ion-badge item-right>{{ 'GRATIS_PARA_SIEMPRE' | translate }}</ion-badge></ion-col>
+			<ion-col col-6 text-right no-margin>
+				<button ion-button small (click)="openModal()">{{ 'GRATIS_PARA_SIEMPRE' | translate }}</button>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 
@@ -57,13 +59,14 @@
 
 	</ion-grid>
 
-
-	<br><br>
+	<br>
 
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6><h4>{{ 'CORPORATE' | translate }}</h4></ion-col>
-			<ion-col col-6 text-right><ion-badge item-right>{{ 'PROBALO_1_SEMANA' | translate }}</ion-badge></ion-col>
+			<ion-col col-6 text-right no-margin>
+				<button ion-button small (click)="openModal()">{{ 'PROBALO_1_SEMANA' | translate }}</button>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 
@@ -121,14 +124,15 @@
 
 	</ion-grid>	
 
-
-
-	<br><br>
+	<br>
 
 	<ion-grid>
 		<ion-row>
 			<ion-col col-6><h4>{{ 'PREMIUM' | translate }}</h4></ion-col>
-			<ion-col col-6 text-right><ion-badge item-right>{{ 'CONSULTA' | translate }}</ion-badge></ion-col>
+			<ion-col col-6 text-right no-margin>
+				<button ion-button small (click)="openModal()">{{ 'CONSULTA' | translate }}</button>
+			</ion-col>
+
 		</ion-row>
 	</ion-grid>
 

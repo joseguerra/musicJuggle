@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
-
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -63,6 +63,7 @@ export function createTranslateLoader(http: Http) {
     BrowserModule,
     HttpModule,
     FormsModule,
+    Ionic2RatingModule,
 
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {

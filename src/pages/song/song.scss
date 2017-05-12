@@ -1,3 +1,44 @@
 page-song {
 
+	ul {
+		margin-top:0px;
+	  padding: 0px;
+
+	  &.rating li {
+	    padding: 5px 0px !important;
+	    background: none;
+	    color: #f53555;
+
+	    ion-icon {
+	      font-size: 16px;
+	    }
+	  }
+	}
+	.default-button{
+		margin-bottom: 15px
+	}
+
+	h1, h2, h3{
+		margin-bottom: 20px !important;
+		margin-top: 15px !important;
+	}
+
+	.text-info{
+		font-size: 1.6rem;
+		margin-bottom: 30px
+	}
+
+	.titulo-cancion{
+		margin-bottom: 5px !important
+	}
+
+	.linea{
+		margin-bottom: 20px
+	}
+	.padding-right{
+		padding-right: 5px !important;
+	}
+	.padding-left{
+		padding-left: 5px !important;
+	}
 }

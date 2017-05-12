@@ -10,7 +10,7 @@
 	<img src="/assets/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>
 
 	
-	<button ion-button block outline class='facebook-login'>Conectate con Facebook</button>	
+	<button ion-button block outline class='default-button facebook-login'>{{ 'CONECTATE_CON_FACEBOOK' | translate }}</button>	
 
 	<h3> {{ 'CREA_TU_CUENTA' | translate }}</h3>
 
@@ -45,7 +45,7 @@
 
 	</ion-list>
 
-	<button ion-button block>{{ 'CREAR CUENTA' | translate }}</button>
+	<button ion-button block class='default-button'>{{ 'CREAR CUENTA' | translate }}</button>
 
 	<p text-center>{{ 'YA_TIENES_CUENTA' | translate }} <strong><span (click)="openLogin()"> {{ 'INICIA_SESION' | translate }}</span></strong></p>
 

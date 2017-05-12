@@ -7,11 +7,11 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
-    <ion-title>{{ 'PERFIL' | translate }}</ion-title>
+    <ion-title>{{ 'PROFILE' | translate }}</ion-title>
   
 		<ion-buttons end>
 			<button ion-button icon-only (click)="openModal()">
-				Guardar &nbsp;
+				{{ 'SAVE' | translate }} &nbsp;
 			</button>
 		</ion-buttons>
 
@@ -110,8 +110,6 @@
 		</ion-item>
 	</ion-list>
 
-
-	<button ion-button block>{{ 'GUARDAR' | translate }}</button>
-
+	<button ion-button block class='default-button'>{{ 'SAVE' | translate }}</button>
 
 </ion-content>

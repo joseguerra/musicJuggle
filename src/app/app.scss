@@ -36,25 +36,29 @@
 .title-3{
     font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
 }
 
 .title-4{
     font-size: 15px;
     font-weight: 600;
-    text-transform: uppercase;
 }
 
 .text-4{
-    font-size: 12px;
+    font-size: 1.7rem;
     font-weight: 400;
     text-transform: none;
-    font-style: italic;
-
 }
 
 .text-rojo{
     color: #f53555 !important
+}
+
+.text-grey{
+    color: #aaa !important;
+}
+
+.text-grey-2{
+    color: #888;   
 }
 
 .uppercase{
@@ -122,6 +126,10 @@ ion-icon {
 
 }
 
+h1, h2, h3, h4, h5{
+    font-weight: 600 !important;
+}
+
 .well{
     border: 1px solid #ddd;
     padding: 10px;
@@ -129,18 +137,15 @@ ion-icon {
     box-shadow: #ddd 0px 0px 8px 1px;       
 }
 
-/*
-.button{
-    border-radius: 9px !important;
+
+.default-button{ 
+    border-radius: 7px !important;
     font-weight: 600;
-    padding: 22px 10px ;
+    padding: 20px 10px ;
+    font-size: 1.6rem;
+    box-shadow: none
 }
-*/
 
-.text-grey{
-    color: #888;
-
-}
 
 ion-badge{
     border-radius: 4px !important;
@@ -178,4 +183,18 @@ ion-badge{
   margin: 0px;
   width: 100%;
   border:none
+}
+
+button{
+    text-transform: capitalize !important;
+}
+
+.button-small{
+    border-radius: 7px;
+    box-shadow: none;
+}
+
+.button-grey{
+    background: #999;
+    color: white 
 }

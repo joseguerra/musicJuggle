@@ -3,7 +3,7 @@
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
--->
+
 <ion-header>
 
   <ion-navbar color='navbarColor'>
@@ -11,7 +11,7 @@
   </ion-navbar>
 
 </ion-header>
-
+-->
 
 <ion-content no-padding>
 
@@ -25,15 +25,68 @@
 	      </ion-card-content>
       </div>
 
-      <h2>Even FLow</h2>
+      <div padding>
 
-      <p>
-      	{{ 'ARTISTA' | translate }}: Pearl Jam <br>
-      	{{ 'ALBUM' | translate }}: Disco 1 <br>
-      	{{ 'ANO' | translate }}: 2009 <br>
-      	{{ 'GENERO' | translate }}: Grounge <br>
+	      <h1 class="titulo-cancion">Even FLow</h1>
 
-      </p>
+			<rating [(ngModel)]="rate" readOnly="true" val="3" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">4</rating>
+
+	      <p class="text-info">
+	      	{{ 'ARTISTA' | translate }}: Pearl Jam <br>
+	      	{{ 'ALBUM' | translate }}: Disco 1 <br>
+	      	{{ 'ANO' | translate }}: 2009 <br>
+	      	{{ 'GENERO' | translate }}: Grounge <br>
+	      	ISRC JM K40 14  00212
+	      </p>
+
+	      <hr>
+
+	      <h2>{{ 'LETRA' | translate }}</h2>
+
+	      <hr class="linea">
+	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_ITUNES' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
+	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_SPOTIFY' | translate }} <ion-icon name="md-share"></ion-icon></button>
+	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_DEEZER' | translate }} <ion-icon name="md-share"></ion-icon></button>
+
+	      <hr>
+
+	      <h1>{{ 'VIDEOS_EN_YOUTUBE' | translate }}</h1>
+
+	      <hr>
+
+	      <button ion-button block item-left icon-right  class='default-button'>{{ 'HACER_UNA_PREGUNTA' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
+
+	      <button ion-button block item-left icon-right outline class='default-button'>{{ 'LLAMENME' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
+
+	        <p class='text-grey text-4' text-center>
+		    {{ 'TXT_CONTACT_1' | translate }}<br>
+		    {{ 'TXT_CONTACT_2' | translate }}<br>
+		    (UTC -03:30)
+		  </p>
+
+		  <hr>
+
+		  <h2>Boradcasting</h2>
+
+			<ion-grid no-padding> 
+				<ion-row>
+				    <ion-col class="padding-right">
+				    	<button ion-button block class='default-button' >{{ 'COTIZALO_VOS_MISMO' | translate }} </button>
+				    </ion-col>
+				    <ion-col  class="padding-left">
+				    	<button ion-button block class='default-button button-grey'> {{ 'COTIZAR_GRATIS' | translate }} </button>
+				    </ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<button ion-button block class='default-button'>{{ 'PEDIR_COTIZACION' | translate }} </button>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		  
+		  
+
+		</div>
 
   </ion-card>
 
