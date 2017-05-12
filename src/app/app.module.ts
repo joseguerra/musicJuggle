@@ -32,6 +32,7 @@ import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
 import { Login } from '../pages/login/login';
 import { Song } from '../pages/song/song';
 
+import {ListenProvider} from '../pages/listen/listen.provider';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -106,6 +107,7 @@ export function createTranslateLoader(http: Http) {
     Song
   ],
   providers: [
+  ListenProvider,
     StatusBar,
     SplashScreen,
     MediaPlugin, 
