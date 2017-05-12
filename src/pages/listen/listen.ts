@@ -33,7 +33,7 @@ export class Listen {
 				public listen: ListenProvider) {
 	}
 
-	/*
+	
 	ionViewDidEnter() {    
       var current_data = new Date();
       this.timestamp = current_data.getTime()/1000;    
@@ -47,19 +47,19 @@ export class Listen {
       this.signature = this.sign(stringToSign,'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB');    
       console.log(this.signature)
   }
-  */
+  
 
    buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
     return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
   }
 
-  /*
+  
   sign(signString, accessSecret) {
     return crypto.createHmac('sha1', accessSecret)
       .update(utf8.encode(signString))
       .digest().toString('base64');
   }
-  */
+  
 
   openSong(){
   	   this.file.startRecord();
