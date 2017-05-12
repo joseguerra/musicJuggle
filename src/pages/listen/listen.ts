@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+import * as utf8 from 'utf8';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Song } from '../song/song';
@@ -23,7 +24,7 @@ export class Listen {
 	file: MediaObject = this.media.create("myrecording.mp3");
   	signature: string;
   	timestamp: any; 
-  	song =  Song;
+  	song =  Song;		
   	searchResults = SearchResults; 
 	
 	constructor(public navCtrl: NavController,
@@ -41,9 +42,9 @@ export class Listen {
       'audio',
       '1',
       this.timestamp);
-      
+      console.log(this.timestamp)
       this.signature = this.sign(stringToSign,'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB');    
-      
+      console.log(this.signature)
   }
 
    buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
@@ -52,7 +53,7 @@ export class Listen {
 
   sign(signString, accessSecret) {
     return crypto.createHmac('sha1', accessSecret)
-      .update(new Buffer(signString, 'utf-8'))
+      .update(utf8.encode(signString))
       .digest().toString('base64');
   }
 
