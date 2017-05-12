@@ -25,7 +25,7 @@ export class Song {
 		    
 		    this.song = data;
 
-		    console.log(this.song);
+		    console.log(this.song); 
 
 		});
 
@@ -34,5 +34,10 @@ export class Song {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Song');
   }
+
+
+	goBack(){
+		this.navCtrl.pop();
+	}
 
 }

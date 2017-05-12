@@ -53,4 +53,28 @@ page-song {
 	.container-1 > ion-card-content {
 		padding-bottom: 0px !important
 	}
+
+	.container-image {
+	    height: 35vh;
+	    background: #444;
+	    margin: 0 auto;
+	    object-fit: cover;
+	}
+
+	.container-image img{
+		width: 100%;
+	    object-fit: cover;
+	    height: 100%;
+	}
+
+	ion-fab{
+		margin-top:5vh;
+		margin-left: -10px
+
+	}
+
+	.fab{
+		background: rgba(0, 0, 0, 0.39);
+	}
+
 }
