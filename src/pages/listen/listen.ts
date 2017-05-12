@@ -50,11 +50,7 @@ export class Listen {
 		return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
 	}
 
-	sign(signString, accessSecret) {
-		return crypto.createHmac('sha1', accessSecret)
-			.update(Buffer.from(signString)) 
-			.digest().toString('base64');
-	}
+
 
 	openSong(){
 
