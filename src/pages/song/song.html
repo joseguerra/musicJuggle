@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
-    <ion-title>song</ion-title>
+    
   </ion-navbar>
 
 </ion-header>
@@ -17,8 +17,16 @@
 
   <ion-card class="card-no-padding">
       
-      <img [src]="song?.album.images[0].url" />
-      
+	<ion-fab top left  edge>
+		<button ion-fab mini (click)="goBack()">
+			<ion-icon name="arrow-back"></ion-icon>
+		</button>
+	</ion-fab>
+
+      <div class="container-image">
+      	<img [src]="song?.album.images[0].url" />
+      </div>
+
       <div text-right class="container-1">
 	      <ion-card-content>
 	          <button ion-button small item-left icon-right (click)="openModal()">{{ 'COMPARTIR' | translate }} <ion-icon name="md-share"></ion-icon></button>
