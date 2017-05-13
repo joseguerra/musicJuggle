@@ -13,6 +13,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
+import { Transfer } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -110,10 +113,12 @@ export function createTranslateLoader(http: Http) {
     SearchResults
   ],
   providers: [
-  ListenProvider,
+    ListenProvider,
     StatusBar,
     SplashScreen,
     MediaPlugin, 
+    Transfer,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
