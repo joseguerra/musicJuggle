@@ -12,6 +12,7 @@ import { Platform } from 'ionic-angular';
 
 
 
+
 /**
  * Generated class for the Listen page.
  *
@@ -54,6 +55,7 @@ export class Listen {
 																								this.listen.signature_version,
 																								this.timestamp);                  
       this.signature = this.sign(stringToSign,this.listen.accessSecret);                
+
   }
   
 
@@ -141,6 +143,7 @@ export class Listen {
     });
     alert.present();
   }
+
 
 
 	buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
