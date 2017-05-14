@@ -9,6 +9,8 @@ import { Terms } from '../terms/terms';
 import { Recomendations } from '../recomendations/recomendations';
 import { Register } from '../register/register';
 
+import { NoResults } from '../no-results/no-results';
+
 
 /**
  * Generated class for the More page.
@@ -30,6 +32,7 @@ export class More {
 	selectPlan 	=  SelectPlan;
 	recomendations 	=  Recomendations;
   register   =  Register;
+  noResults   =  NoResults;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -56,6 +59,10 @@ export class More {
 
   openRegister(){
     this.navCtrl.setRoot(this.register);
+  }
+
+  openNoResults(){
+    this.navCtrl.setRoot(this.noResults);
   }
 
   openRecomendations(id){

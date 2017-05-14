@@ -36,6 +36,7 @@ import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
 import { Login } from '../pages/login/login';
 import { Song } from '../pages/song/song';
 import { SearchResults } from '../pages/search-results/search-results';
+import { NoResults } from '../pages/no-results/no-results';
 
 import {ListenProvider} from '../pages/listen/listen.provider';
 
@@ -64,7 +65,8 @@ export function createTranslateLoader(http: Http) {
     Register,
     Login,
     Song,
-    SearchResults
+    SearchResults,
+    NoResults
   ],
   imports: [
     BrowserModule,
@@ -111,7 +113,8 @@ export function createTranslateLoader(http: Http) {
     Register,
     Login,
     Song,
-    SearchResults
+    SearchResults,
+    NoResults
   ],
   providers: [
     ListenProvider,
