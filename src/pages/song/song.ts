@@ -17,24 +17,36 @@ import 'rxjs/add/operator/map';
 })
 export class Song {
 
-	song: any;
+	song: any = {
+		album:{
+			name,
+			images:[{
+					url:''
+			}]
+		},
+		name,
+		artists:[{
+			name:''
+		}]
+	};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-
-		this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('id')).map(res => res.json()).subscribe(data => {
-		    
-		    this.song = data;
-
-		    console.log(this.song); 
-
-		});
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {		
+		if(navParams.get('id')){
+			this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('id')).map(res => res.json()).subscribe(data => {		    
+		    this.song = data;		    
+			});
+		}else{
+			console.log("llegue aqui");
+			this.song.album.images[0].url = 'url';
+			this.song.name = navParams.get('data').metadata.music[0].title;
+			this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
+			this.song.album.name = navParams.get('data').metadata.music[0].album.name;
+		}
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Song');
   }
-
 
 	goBack(){
 		this.navCtrl.pop();

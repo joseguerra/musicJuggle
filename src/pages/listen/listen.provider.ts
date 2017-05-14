@@ -10,25 +10,22 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ListenProvider {
-
+  post: string = 'POST';
+  endpoint: string = '/v1/identify';
+  access_key: string = '3291ad69822f88e477bd738467abb585';
+  data_type: string = 'audio';
+  signature_version: string = '1';
+  accessSecret: string = 'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB';
+  host: string = 'identify-us-west-2.acrcloud.com';
   constructor(public http: Http) {
     console.log('Hello Clinic Provider');
   }
 
-   register(params){      
-
-    var formData = new FormData();
-    formData.append("sample", params.sample);
-    formData.append("access_key", params.access_key);
-    formData.append("data_type", 'audio');
-    formData.append("signature_version", 1);
-    formData.append("signature", params.signature);
-    formData.append("sample_bytes", 100000);
-    formData.append("timestamp",params.timestamp);
-
-      var url = "http://identify-us-west-2.acrcloud.com/v1/identify";
+   postData(formData: FormData){      
+      var url = "http://"+this.host+this.endpoint;
       var response = this.http.post(url,formData).map(res => res.json());
       return response;
   }
+  
 
 }
