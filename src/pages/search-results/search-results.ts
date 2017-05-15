@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { Song } from '../song/song';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -19,18 +19,31 @@ export class SearchResults {
 
 	song =  Song;
 	songs: any;
+	loader: any;
+	constructor(public navCtrl: NavController,
+				public navParams: NavParams,
+				public http: Http,
+				public loadingCtrl: LoadingController) {
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+		let loader = this.loadingCtrl.create({
+			content: 'Please wait...'			
+		})
+		
+		loader.present();
 
 		console.log( navParams.get('query') );
 
 		this.http.get('https://api.spotify.com/v1/search?type=track&q='+navParams.get('query')).map(res => res.json()).subscribe(data => {
 		    this.songs = data.tracks.items;
-
+			loader.dismissAll();
 		    console.log(this.songs);
 
 		});
 
+	}
+
+	presentLoading() {
+		
 	}
 
  	openSong(id){

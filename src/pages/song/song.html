@@ -52,14 +52,17 @@
 	      <h2>{{ 'LETRA' | translate }}</h2>
 
 	      <hr class="linea">
-	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_ITUNES' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
-	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_SPOTIFY' | translate }} <ion-icon name="md-share"></ion-icon></button>
-	      <button ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_DEEZER' | translate }} <ion-icon name="md-share"></ion-icon></button>
+	      <button *ngIf="song?.itunes"  ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_ITUNES' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
+	      <button *ngIf="song?.id" ion-button block item-left icon-right (click)="openSpotify()"  class='default-button'>{{ 'ESCUCHAR_EN_SPOTIFY' | translate }} <ion-icon name="md-share"></ion-icon></button>
+	      <button *ngIf="song?.deezer" ion-button block item-left icon-right (click)="openDeezer()"  class='default-button'>{{ 'ESCUCHAR_EN_DEEZER' | translate }} <ion-icon name="md-share"></ion-icon></button>
 
 	      <hr>
 
-	      <h1>{{ 'VIDEOS_EN_YOUTUBE' | translate }}</h1>
+	      <h1 *ngIf="song?.youtube">{{ 'VIDEOS_EN_YOUTUBE' | translate }}</h1>
 
+		  <div *ngIf="song?.youtube" class="video-container">
+			  <iframe [src]="song?.youtube" frameborder="0" allowfullscreen></iframe>
+		  </div>
 	      <hr>
 
 	      <button ion-button block item-left icon-right  class='default-button'>{{ 'HACER_UNA_PREGUNTA' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>

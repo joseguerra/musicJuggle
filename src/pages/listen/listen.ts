@@ -3,6 +3,7 @@ import * as utf8 from 'utf8';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { Song } from '../song/song';
+import {NoResults} from '../no-results/no-results';
 import { MediaPlugin} from '@ionic-native/media';
 import { ListenProvider } from '../listen/listen.provider';
 import { SearchResults } from '../search-results/search-results';
@@ -31,7 +32,8 @@ export class Listen {
 
   	signature: string;
   	timestamp: any; 
-  	song =  Song;		
+  	song =  Song;	
+	noResults	= NoResults;
   	searchResults = SearchResults; 
   	base64: any;
 
@@ -42,24 +44,26 @@ export class Listen {
 				public listen: ListenProvider,
 				public plt: Platform,
 				private transfer: Transfer, 
-				private file: File) {
+				private file: File
+				) {
 	}
 
 	
 	ionViewDidEnter() { 			
       this.timestamp = Math.floor(Date.now() / 1000);    
       var stringToSign = this.buildStringToSign(this.listen.post,
-																								this.listen.endpoint,
-																								this.listen.access_key,
-																								this.listen.data_type,
-																								this.listen.signature_version,
-																								this.timestamp);                  
+				this.listen.endpoint,
+				this.listen.access_key,
+				this.listen.data_type,
+				this.listen.signature_version,
+				this.timestamp);  
+				                
       this.signature = this.sign(stringToSign,this.listen.accessSecret);                
 
   }
   
 
-  	recordAudio(){
+  	recordAudio(){			
 		var path = null;
 		var file_name = "new2";
 		var file_extension = null;
@@ -126,11 +130,14 @@ export class Listen {
 
 	private postData(formData: FormData) {
 		this.listen.postData(formData).subscribe(
-      data => {    				
-				this.navCtrl.push(this.song, {'id':null,'data':data}); 				
-      },
+      data => {
+				if(data.status.code==0)    				
+					this.navCtrl.push(this.song, {'id':null,'data':data}); 				
+				else
+					this.navCtrl.push(this.noResults);
+			},
       err => {        
-        console.log(err);        
+        this.navCtrl.push(this.noResults);      
       }
     );
 	}

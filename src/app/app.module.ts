@@ -11,11 +11,13 @@ import { Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { MediaPlugin } from '@ionic-native/media';
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
+import { AppAvailability } from '@ionic-native/app-availability';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -122,6 +124,8 @@ export function createTranslateLoader(http: Http) {
     SplashScreen,
     MediaPlugin, 
     Transfer,
+    AppAvailability,
+    InAppBrowser,
     File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
