@@ -17,39 +17,17 @@
 
 
 	<ion-list no-lines>
-		<ion-item no-padding (click)="onclick(item)">
+		<ion-item no-padding *ngFor="let song of songs; let i = index" (click)="openSong(song)">
 			<ion-thumbnail item-left>
-				<img src="http://images.rewardstyle.com/img?v=2.13&p=n_48620772" class="img">
-				<p class="position">1</p>
+				<img [src]="song.album.images[0].url" class="img">
+				<p class="position">{{i+1}}</p>
 			</ion-thumbnail>
 
 
-			<h2>My Neighbor Totoro</h2>
-			<p>Hayao Miyazaki • 1988</p>
-			
+			<h2>{{song.name}}</h2>
+			<p>{{song.album.name}}</p>
+			<p>{{song.artists[0].name}}</p>
 		</ion-item>
-
-		<ion-item no-padding (click)="onclick(item)">
-			<ion-thumbnail item-left>
-				<img src="http://images.rewardstyle.com/img?v=2.13&p=n_48620772" class="img">
-				<p class="position">2</p>
-			</ion-thumbnail>
-			<h2>My Neighbor Totoro</h2>
-			<p>Hayao Miyazaki • 1988</p>
-			
-		</ion-item>
-
-		<ion-item no-padding (click)="onclick(item)">
-			<ion-thumbnail item-left>
-				<img src="http://images.rewardstyle.com/img?v=2.13&p=n_48620772" class="img">
-				<p class="position">3</p>
-			</ion-thumbnail>
-			<h2>My Neighbor Totoro</h2>
-			<p>Hayao Miyazaki • 1988</p>
-			
-		</ion-item>
-
-
 
 	</ion-list>
 

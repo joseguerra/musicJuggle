@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { Song } from '../song/song';
+import {FirebaseProvider} from '../../app/firebase.provider';
 /**
  * Generated class for the Recomendations page.
  *
@@ -13,12 +14,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'recomendations.html',
 })
 export class Recomendations {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  song =  Song;
+  recomendations: any[];
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              public firebaseProvider:FirebaseProvider,
+              public loadingCtrl: LoadingController) {
+      let loader = this.loadingCtrl.create({
+        content: 'Please wait...'			
+      })
+      loader.present();
+      
+    this.firebaseProvider.getRecomendations().subscribe(recomendations =>{  
+      loader.dismiss();                
+      this.recomendations = recomendations      
+    },
+    err=>{
+      console.log(err);  
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Recomendations');
-  }
+ 	openSong(recomendation){     
+ 		this.navCtrl.push(this.song, {'id':1,'recomendation':recomendation});
+ 	}
 
 }

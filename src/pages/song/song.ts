@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -8,6 +8,7 @@ import { AppAvailability } from '@ionic-native/app-availability';
 import { Platform } from 'ionic-angular';
 
 import {DomSanitizer} from '@angular/platform-browser';
+import {MusixmatchProvider} from '../../app/musixmatch.provider';
 /**
  * Generated class for the Song page.
  *
@@ -17,10 +18,11 @@ import {DomSanitizer} from '@angular/platform-browser';
 @IonicPage()
 @Component({
   selector: 'page-song',
-  templateUrl: 'song.html',
+  templateUrl: 'song.html',  
 })
 export class Song {
-
+	track: string;
+	loader:any
 	song: any = {
 		album:{
 			name,
@@ -35,7 +37,8 @@ export class Song {
 		id:'',
 		deezer:'',
 		itunes:'',
-		youtube:''
+		youtube:'',
+		lyric:''
 	};
 
   constructor(public navCtrl: NavController,
@@ -43,23 +46,36 @@ export class Song {
 							public http: Http,
 							private appAvailability: AppAvailability,
 							public plt: Platform,
-							private iab: InAppBrowser,
-							public alertCtrl: AlertController,
+							private iab: InAppBrowser,							
 							public loadingCtrl: LoadingController,
-							public sanitizer:DomSanitizer) {		
+							public sanitizer:DomSanitizer,
+							public musixmatchProvider:MusixmatchProvider) {		
 
-		let loader = this.loadingCtrl.create({
+		this.loader = this.loadingCtrl.create({
 			content: 'Please wait...'			
 		})
 		
 											
 
-		if(navParams.get('id')){
-			loader.present();
-			this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('id')).map(res => res.json()).subscribe(data => {		    
-		    this.song = data;					
-				loader.dismissAll();					
-			});
+		if(navParams.get('id')){			
+			if(navParams.get('recomendation')){
+				this.song = navParams.get('recomendation');
+				this.getLyrics(navParams.get('recomendation').artists[0].name,navParams.get('recomendation').name);
+			}
+			else if(navParams.get('song')){
+				
+				this.song = navParams.get('song');				
+				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);
+			}
+			else{
+				this.loader.present();
+				this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('id')).map(res => res.json()).subscribe(data => {		    
+					this.song = data;	
+					this.getLyrics(this.song.artists[0].name,this.song.name);						
+				});
+			}
+
+			
 		}else{					
 			this.song.album.images[0].url = 'url';
 			this.song.name = navParams.get('data').metadata.music[0].title;
@@ -68,13 +84,33 @@ export class Song {
 			this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
 			this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
 			this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
-			
+			this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);						
 		}
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Song');
-  }
+	getLyrics(artistName,songName){
+		this.loader.present();
+		this.musixmatchProvider.getSong(artistName,songName)
+		.subscribe(response =>{
+			if(response.message.header.available!=0){
+				this.track =  response.message.body.track_list[0].track.track_id;						
+				this.musixmatchProvider.getLyrics(this.track)
+				.subscribe(response =>{	
+					
+					if(response.message.header.status_code==200){								
+						this.song.lyric =  response.message.body.lyrics.lyrics_body;												
+						this.loader.dismiss();							
+					}
+					this.loader.dismiss();																												
+				},err=>{							
+					this.loader.dismiss();
+				});		
+			}
+			this.loader.dismiss();																										
+		},err=>{					
+			this.loader.dismiss();	
+		});
+	}
 
 	goBack(){
 		this.navCtrl.pop();
@@ -114,16 +150,5 @@ export class Song {
 	openItunes() {
 		this.launchExternalApp('instagram://', 'deezer.android.app', 'deezer://www.deezer.com/track/', 'http://www.deezer.com/track/',this.song.deezer);
 	}
-
-	showAlert(message,title) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-
 
 }

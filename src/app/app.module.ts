@@ -18,6 +18,7 @@ import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AngularFireModule } from 'angularfire2';
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -41,10 +42,23 @@ import { SearchResults } from '../pages/search-results/search-results';
 import { NoResults } from '../pages/no-results/no-results';
 
 import {ListenProvider} from '../pages/listen/listen.provider';
+import {FirebaseProvider} from '../app/firebase.provider';
+import {MusixmatchProvider} from '../app/musixmatch.provider';
+
+import {TruncatePipe} from './truncate.pipe';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+  export const firebaseConfig = {
+      apiKey: "AIzaSyBzuLO7pTPLvrQ3_gMTTqrfyaMnOMZ_sjw",
+      authDomain: "angulafire.firebaseapp.com",
+      databaseURL: "https://angulafire.firebaseio.com",
+      projectId: "angulafire",
+      storageBucket: "angulafire.appspot.com",
+      messagingSenderId: "700740323265"
+    };
 
 
 @NgModule({
@@ -68,14 +82,16 @@ export function createTranslateLoader(http: Http) {
     Login,
     Song,
     SearchResults,
-    NoResults
+    NoResults,
+    TruncatePipe,    
   ],
   imports: [
+    
     BrowserModule,
     HttpModule,
     FormsModule,
     Ionic2RatingModule,  
-
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
@@ -94,6 +110,9 @@ export function createTranslateLoader(http: Http) {
         deps: [Http]
       }
     })
+  ],
+  exports: [
+    TruncatePipe
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -120,6 +139,8 @@ export function createTranslateLoader(http: Http) {
   ],
   providers: [
     ListenProvider,
+    FirebaseProvider,
+    MusixmatchProvider,
     StatusBar,
     SplashScreen,
     MediaPlugin, 

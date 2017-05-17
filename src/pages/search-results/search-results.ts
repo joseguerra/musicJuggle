@@ -29,15 +29,15 @@ export class SearchResults {
 			content: 'Please wait...'			
 		})
 		
-		loader.present();
-
-		console.log( navParams.get('query') );
+		loader.present();		
 
 		this.http.get('https://api.spotify.com/v1/search?type=track&q='+navParams.get('query')).map(res => res.json()).subscribe(data => {
 		    this.songs = data.tracks.items;
-			loader.dismissAll();
-		    console.log(this.songs);
+			loader.dismissAll();		    
 
+		},err=>{
+			loader.dismissAll();		    
+			console.log(err)
 		});
 
 	}

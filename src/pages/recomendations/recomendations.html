@@ -14,5 +14,16 @@
 
 
 <ion-content padding>
+  	<ion-list no-lines>
+		<ion-item no-padding *ngFor="let recoemdation of recomendations" (click)="openSong(recoemdation)">
+			<ion-thumbnail item-left>
+				<img [src]="recoemdation.album.images[0].url" class="img">			
+			</ion-thumbnail>
 
+			<h2>{{recoemdation.name}}</h2>
+			<p>{{recoemdation.album.name}}</p>
+			<p>{{recoemdation.artists[0].name}}</p>
+		</ion-item>
+
+	</ion-list>
 </ion-content>

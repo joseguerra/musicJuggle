@@ -57,7 +57,7 @@ export class Listen {
 				this.listen.data_type,
 				this.listen.signature_version,
 				this.timestamp);  
-				                
+
       this.signature = this.sign(stringToSign,this.listen.accessSecret);                
 
   }
@@ -109,7 +109,7 @@ export class Listen {
 
 
 
-	private readFile(file: any) {
+	private readFile(file: any) {		
 		const reader = new FileReader();
 		reader.onloadend = () => {
 		  const formData = new FormData();
@@ -120,7 +120,7 @@ export class Listen {
 		  formData.append('data_type', this.listen.data_type);
 		  formData.append('signature_version', this.listen.signature_version);
 		  formData.append('signature', this.signature);
-		  formData.append('sample_bytes', 100000);
+		  formData.append('sample_bytes', this.listen.sample_bytes);
 		  formData.append('timestamp', this.timestamp);
 
 		  this.postData(formData);

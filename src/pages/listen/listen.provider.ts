@@ -17,6 +17,7 @@ export class ListenProvider {
   signature_version: string = '1';
   accessSecret: string = 'YC4WKh844XDjbZutXsvvmiNDqW81ZVTIHspLYdxB';
   host: string = 'identify-us-west-2.acrcloud.com';
+  sample_bytes: string = '100';
   constructor(public http: Http) {
     console.log('Hello Clinic Provider');
   }

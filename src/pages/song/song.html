@@ -29,7 +29,7 @@
 
       <div text-right class="container-1">
 	      <ion-card-content>
-	          <button ion-button small item-left icon-right (click)="openModal()">{{ 'COMPARTIR' | translate }} <ion-icon name="md-share"></ion-icon></button>
+	          <button ion-button small item-left icon-right 	>{{ 'COMPARTIR' | translate }} <ion-icon name="md-share"></ion-icon></button>
 	      </ion-card-content>
       </div>
 
@@ -49,8 +49,8 @@
 
 	      <hr>
 
-	      <h2>{{ 'LETRA' | translate }}</h2>
-
+	      <h2 *ngIf="song?.lyric">{{ 'LETRA' | translate }}</h2>
+		  	<p class="text-info">{{song?.lyric | truncate:20}}</p>
 	      <hr class="linea">
 	      <button *ngIf="song?.itunes"  ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_ITUNES' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
 	      <button *ngIf="song?.id" ion-button block item-left icon-right (click)="openSpotify()"  class='default-button'>{{ 'ESCUCHAR_EN_SPOTIFY' | translate }} <ion-icon name="md-share"></ion-icon></button>
