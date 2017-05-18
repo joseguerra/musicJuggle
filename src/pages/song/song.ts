@@ -76,8 +76,13 @@ export class Song {
 			}
 
 			
-		}else{					
-			this.song.album.images[0].url = 'url';
+		}else{		
+			this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
+				this.song.album.images[0].url = data.album.images[0].url;						    
+			},err=>{				
+				console.log(err)
+			});
+			
 			this.song.name = navParams.get('data').metadata.music[0].title;
 			this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
 			this.song.album.name = navParams.get('data').metadata.music[0].album.name;
