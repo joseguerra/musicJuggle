@@ -59,11 +59,12 @@ export class Song {
 
 		if(navParams.get('id')){			
 			if(navParams.get('recomendation')){
+				this.loader.present();
 				this.song = navParams.get('recomendation');
 				this.getLyrics(navParams.get('recomendation').artists[0].name,navParams.get('recomendation').name);
 			}
 			else if(navParams.get('song')){
-				
+				this.loader.present();
 				this.song = navParams.get('song');				
 				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);
 			}
@@ -76,7 +77,8 @@ export class Song {
 			}
 
 			
-		}else{		
+		}else{	
+			this.loader.present();	
 			this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
 				this.song.album.images[0].url = data.album.images[0].url;						    
 			},err=>{				
@@ -93,15 +95,13 @@ export class Song {
 		}
   }
 
-	getLyrics(artistName,songName){
-		this.loader.present();
+	getLyrics(artistName,songName){		
 		this.musixmatchProvider.getSong(artistName,songName)
 		.subscribe(response =>{
 			if(response.message.header.available!=0){
 				this.track =  response.message.body.track_list[0].track.track_id;						
 				this.musixmatchProvider.getLyrics(this.track)
-				.subscribe(response =>{	
-					
+				.subscribe(response =>{						
 					if(response.message.header.status_code==200){								
 						this.song.lyric =  response.message.body.lyrics.lyrics_body;												
 						this.loader.dismiss();							
