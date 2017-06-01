@@ -17,13 +17,17 @@ import { SelectPlan } from '../select-plan/select-plan';
 export class Profile {
 
 	selectPlan =  SelectPlan;
-
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
+	email:string;
+	fullName: string;
+	name: string;
+	constructor(public navCtrl: NavController, 
+				public navParams: NavParams) {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad Profile');
+
 	}
+
 
 
 	onSelectPlan(id){

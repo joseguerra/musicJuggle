@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Register } from '../register/register';
+import { Login } from '../login/login';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -21,7 +21,7 @@ export class Intro {
 
 	@ViewChild(Slides) slides: Slides;
 
-	register =  Register;
+	login =  Login;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
   }
@@ -32,7 +32,7 @@ export class Intro {
 
   goToHome(){
   	this.storage.set('introShown', true);
-    this.navCtrl.setRoot(this.register);
+    this.navCtrl.setRoot(this.login);
   }
 
   goToSlide(number) {

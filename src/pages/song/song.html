@@ -47,16 +47,16 @@
 	      	ISRC JM K40 14  00212
 	      </p>
 
-	      <hr>
+	      <hr *ngIf="song?.lyric">
 
 	      <h2 *ngIf="song?.lyric">{{ 'LETRA' | translate }}</h2>
-		  	<p class="text-info">{{song?.lyric | truncate:20}}</p>
+		  <p class="text-info">{{song?.lyric | truncate:20}}</p>
 	      <hr class="linea">
 	      <button *ngIf="song?.itunes"  ion-button block item-left icon-right  class='default-button'>{{ 'ESCUCHAR_EN_ITUNES' | translate }} <ion-icon name="itunes-icon"></ion-icon></button>
 	      <button *ngIf="song?.id" ion-button block item-left icon-right (click)="openSpotify()"  class='default-button'>{{ 'ESCUCHAR_EN_SPOTIFY' | translate }} <ion-icon name="md-share"></ion-icon></button>
 	      <button *ngIf="song?.deezer" ion-button block item-left icon-right (click)="openDeezer()"  class='default-button'>{{ 'ESCUCHAR_EN_DEEZER' | translate }} <ion-icon name="md-share"></ion-icon></button>
 
-	      <hr>
+	      <hr *ngIf="song?.youtube">
 
 	      <h1 *ngIf="song?.youtube">{{ 'VIDEOS_EN_YOUTUBE' | translate }}</h1>
 

@@ -24,7 +24,7 @@ export class NoResults {
   }
 
   openListen(){
-    this.navCtrl.push(this.listen);
+    this.navCtrl.setRoot(this.listen);
   }
 
   search(query){		

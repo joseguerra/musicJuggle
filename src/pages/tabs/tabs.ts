@@ -10,10 +10,10 @@ import { More } from '../more/more';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
-  tab1Root = Profile;
+Listen
+  tab1Root = Listen;
   tab2Root = History;
-  tab3Root = Listen;
+  tab3Root = Profile;
   tab4Root = ContactPage;
   tab5Root = More;
   

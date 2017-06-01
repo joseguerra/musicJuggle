@@ -18,7 +18,12 @@ import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+
+/*Firebase*/ 
 import { AngularFireModule } from 'angularfire2';
+import { GooglePlus } from '@ionic-native/google-plus';
+import {Facebook} from '@ionic-native/facebook';
+import firebase from 'firebase';
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -44,21 +49,32 @@ import { NoResults } from '../pages/no-results/no-results';
 import {ListenProvider} from '../pages/listen/listen.provider';
 import {FirebaseProvider} from '../app/firebase.provider';
 import {MusixmatchProvider} from '../app/musixmatch.provider';
-
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import {TruncatePipe} from './truncate.pipe';
 
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': '326163c5'
+  },
+  'auth':{
+    'facebook':{
+      'scope': []
+    }
+  }
+};
 export function createTranslateLoader(http: Http) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/img/i18n/', '.json');
 }
 
   export const firebaseConfig = {
-      apiKey: "AIzaSyBzuLO7pTPLvrQ3_gMTTqrfyaMnOMZ_sjw",
-      authDomain: "angulafire.firebaseapp.com",
-      databaseURL: "https://angulafire.firebaseio.com",
-      projectId: "angulafire",
-      storageBucket: "angulafire.appspot.com",
-      messagingSenderId: "700740323265"
-    };
+    apiKey: "AIzaSyBzuLO7pTPLvrQ3_gMTTqrfyaMnOMZ_sjw",
+    authDomain: "angulafire.firebaseapp.com",
+    databaseURL: "https://angulafire.firebaseio.com",
+    projectId: "angulafire",
+    storageBucket: "angulafire.appspot.com",
+    messagingSenderId: "700740323265"
+  };
 
 
 @NgModule({
@@ -92,6 +108,7 @@ export function createTranslateLoader(http: Http) {
     FormsModule,
     Ionic2RatingModule,  
     AngularFireModule.initializeApp(firebaseConfig),
+    CloudModule.forRoot(cloudSettings),
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
@@ -137,7 +154,9 @@ export function createTranslateLoader(http: Http) {
     SearchResults,
     NoResults
   ],
-  providers: [
+  providers: [    
+    GooglePlus,
+    Facebook,
     ListenProvider,
     FirebaseProvider,
     MusixmatchProvider,

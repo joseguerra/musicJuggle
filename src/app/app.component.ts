@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import {Login} from '../pages/login/login'
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
@@ -15,7 +16,7 @@ import { LoadingController } from 'ionic-angular';
 
 export class MyApp {
   
-  rootPage:any = TabsPage;
+  rootPage:any = Login;
   loader: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, translate: TranslateService,  public loadingCtrl: LoadingController, public storage: Storage) {
@@ -28,7 +29,7 @@ export class MyApp {
       this.storage.get('introShown').then((result) => {
 
         if(result){
-          this.rootPage = TabsPage;
+          this.rootPage = Login;
         } else {
           this.rootPage = 'Intro';
           this.storage.set('introShown', true);
@@ -37,9 +38,13 @@ export class MyApp {
       });
       
       statusBar.styleDefault();
-      splashScreen.hide();
+      setTimeout(() => {
+        splashScreen.hide();
+      }, 100);
       translate.setDefaultLang('es');
       translate.use('es');
     });
+
+    
   }
 }
