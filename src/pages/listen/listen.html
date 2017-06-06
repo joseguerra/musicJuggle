@@ -15,12 +15,6 @@
 	</ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
-
-	<div text-center>
-		<button ion-button block class='default-button' (click)="recordAudio()">
-			ESCUCHAR 
-		</button>	
-	</div>
+	<div id="crossfade" text-center (click)="recordAudio()" [style.animation-play-state]="animationStatus" [style.background]="background"></div>
 </ion-content>

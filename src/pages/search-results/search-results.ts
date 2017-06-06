@@ -4,6 +4,7 @@ import { Song } from '../song/song';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+
 /**
  * Generated class for the SearchResults page.
  *
@@ -26,24 +27,22 @@ export class SearchResults {
 				public loadingCtrl: LoadingController) {
 
 		let loader = this.loadingCtrl.create({
-			content: 'Please wait...'			
+			content: 'Please wait...'
 		})
-		
-		loader.present();		
 
-		this.http.get('https://api.spotify.com/v1/search?type=track&q='+navParams.get('query')).map(res => res.json()).subscribe(data => {
+		loader.present();
+
+		this.http.get('http://54.214.246.7/tracks.php?q='+navParams.get('query')).map(res => res.json()).subscribe(data => {
 		    this.songs = data.tracks.items;
-			loader.dismissAll();		    
+			loader.dismissAll();
 
 		},err=>{
-			loader.dismissAll();		    
+			loader.dismissAll();
 			console.log(err)
 		});
-
 	}
 
 	presentLoading() {
-		
 	}
 
  	openSong(id){

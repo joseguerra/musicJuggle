@@ -18,19 +18,18 @@
 	<h1 class="text-rojo">Ups...</h1>
 
 	<p class="text-grey-2"><br>{{ 'NO_PUDIMOS_RECONOCER_LA_CANCION' | translate }}</p>
-
 	<hr>
-
 	<p class="text-grey-2"><br><br>{{ 'INTENTA_RECONOCER_NUEVAMENTE' | translate }}</p>
 
-	<button ion-button block class='default-button' (click)="openListen()">{{ 'VOLVER_A_ESCUCHAR' | translate }} </button>	
+	<button ion-button block class='default-button' (click)="openListen()">{{ 'VOLVER_A_ESCUCHAR' | translate }} </button>
 
 	<p class="text-grey-2"><br>{{ 'ENVIANOS_EL_AUDIO' | translate }}</p>
-	<button ion-button block class='default-button' (click)="enviarAudio()">{{ 'ENVIAR_AUDIO' | translate }} </button>	
+	<button ion-button block class='default-button' (click)="enviarAudio()">{{ 'ENVIAR_AUDIO' | translate }} </button>
 
 
 	<p class="text-grey-2">{{ 'BUSCALA_POR_EL_NOMBRE' | translate }}</p>
-	<ion-searchbar
+
+  <ion-searchbar
 		  [showCancelButton]="true"
 		  (search)="search($event)"
 		  placeholder="{{ 'BUSCAR_CANCIONES' | translate }}">

@@ -11,9 +11,6 @@ import { Transfer } from '@ionic-native/transfer';
 import { File, FileEntry } from '@ionic-native/file';
 import { Platform } from 'ionic-angular';
 
-
-
-
 /**
  * Generated class for the Listen page.
  *
@@ -23,98 +20,113 @@ import { Platform } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-listen',
-  templateUrl: 'listen.html',
+  templateUrl: 'listen.html'
+
 })
 export class Listen {
-	
-	fileName = 'audio';
-	extension = null;
 
-  	signature: string;
-  	timestamp: any; 
-  	song =  Song;	
-	noResults	= NoResults;
-  	searchResults = SearchResults; 
-  	base64: any;
+  fileName = 'audio';
+  extension = null;
+  signature: string;
+  timestamp: any;
+  song =  Song;
+  noResults	= NoResults;
+  searchResults = SearchResults;
+  base64: any;
+  animationStatus= "paused";
+  background= "url('../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00000.png');";
 
 	constructor(public navCtrl: NavController,
 				public navParams: NavParams,
-				public alertCtrl: AlertController, 
+				public alertCtrl: AlertController,
 				public media: MediaPlugin,
 				public listen: ListenProvider,
 				public plt: Platform,
-				private transfer: Transfer, 
+				private transfer: Transfer,
 				private file: File
 				) {
 	}
 
-	
-	ionViewDidEnter() { 			
-      this.timestamp = Math.floor(Date.now() / 1000);    
-      var stringToSign = this.buildStringToSign(this.listen.post,
-				this.listen.endpoint,
-				this.listen.access_key,
-				this.listen.data_type,
-				this.listen.signature_version,
-				this.timestamp);  
+	ionViewDidEnter() {
 
-      this.signature = this.sign(stringToSign,this.listen.accessSecret);                
+    this.animationStatus = "paused";
 
+    this.background = "url('../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00000.png');";
+
+    this.timestamp = Math.floor(Date.now() / 1000);
+
+    var stringToSign = this.buildStringToSign(this.listen.post,
+      this.listen.endpoint,
+      this.listen.access_key,
+      this.listen.data_type,
+      this.listen.signature_version,
+      this.timestamp
+    );
+
+    this.signature = this.sign(stringToSign,this.listen.accessSecret);
   }
-  
 
-  	recordAudio(){			
-		var path = null;
-		var file_name = "new2";
-		var file_extension = null;
+  recordAudio(){
 
-	    if(this.plt.is('ios')){
+    console.log('recordaudio');
 
-	        file_extension = ".wav";
-	        path = this.file.tempDirectory;
-	    
-	    }else{
-	        file_extension = ".aac";
-	        path = this.file.externalRootDirectory;
-	    }
+    this.animationStatus = "initial";
 
-	    this.file.createFile(path, file_name + file_extension, true).then((fileEntry) => {
+    console.log('recordaudio2');
 
-	    	console.log(fileEntry);
-	    	console.log(fileEntry.toURL());
+    var path = null;
+    var file_name = "new2";
+    var file_extension = null;
 
-	    	var audio = this.media.create(fileEntry.toURL()	);
+    if(this.plt.is('ios')){
 
-	    	audio.startRecord();
+      file_extension = ".m4a";
+      path = this.file.tempDirectory;
 
-			window.setTimeout(() => {
-			  
-				audio.stopRecord();
+    }else{
 
+      file_extension = ".aac";
+      path = this.file.externalRootDirectory;
+    }
 
-				this.uploadAudio(fileEntry.toURL());
+    console.log('recordaudio3 ' + path);
 
-			}, 10000);	    	
+    this.file.createFile(path, file_name + file_extension, true).then((fileEntry) => {
 
-	    });
-  	}
+    	console.log('recordaudio4 '+  fileEntry);
+    	console.log('recordaudio5 '+fileEntry.toURL());
 
+      if(this.plt.is('ios')){
+        var audio = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') +	file_name + file_extension);
+      }else{
+    	   var audio = this.media.create(fileEntry.toURL()	);
+      }
+
+    	audio.startRecord();
+
+      window.setTimeout(() => {
+
+    	   audio.stopRecord();
+         this.uploadAudio(fileEntry.toURL());
+
+       }, 10000);
+
+     });
+   }
 
 	private uploadAudio(imageFileUri: any): void {
 
 		this.file.resolveLocalFilesystemUrl(imageFileUri)
 		  .then(entry => (<FileEntry>entry).file(file => this.readFile(file)))
-		  .catch(err => console.log(err));
+		  .catch(err => console.log('error ----> ' + err));
 	}
 
-
-
-	private readFile(file: any) {		
+	private readFile(file: any) {
 		const reader = new FileReader();
 		reader.onloadend = () => {
 		  const formData = new FormData();
 		  const imgBlob = new Blob([reader.result], {type: file.type});
-		  
+
 		  formData.append('sample', imgBlob, file.name);
 		  formData.append('access_key', this.listen.access_key);
 		  formData.append('data_type', this.listen.data_type);
@@ -131,13 +143,16 @@ export class Listen {
 	private postData(formData: FormData) {
 		this.listen.postData(formData).subscribe(
       data => {
-				if(data.status.code==0)    				
-					this.navCtrl.push(this.song, {'id':null,'data':data}); 				
-				else
+				if(data.status.code==0){
+          console.log(data);
+          this.navCtrl.push(this.song, {'id':null,'data':data});
+
+          console.log('finish');
+				}else
 					this.navCtrl.push(this.noResults);
 			},
-      err => {        
-        this.navCtrl.push(this.noResults);      
+      err => {
+        this.navCtrl.push(this.noResults);
       }
     );
 	}
@@ -151,20 +166,17 @@ export class Listen {
     alert.present();
   }
 
-
-
 	buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
 		return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
 	}
 
-  
 	sign(signString, accessSecret) {
 		return crypto.createHmac('sha1', accessSecret)
 		  .update(utf8.encode(signString))
 		  .digest().toString('base64');
 	}
 
-	search(query){		
+	search(query){
 		var query = query.srcElement.value;
 		this.navCtrl.push(this.searchResults, {'query':query});
 	}
