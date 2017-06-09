@@ -85,13 +85,13 @@ export class Song {
 
 		}else{
 
-      console.log('NO viene por id -->');
+      console.log('NO viene por id -->>>>');
 
 			this.loader.present();
 
       console.log(navParams.get('data'));
 
-      console.log('<<----');
+      console.log('<<<<<----');
 
       if(typeof navParams.get('data').metadata.music[0].external_metadata.spotify.track.id !== 'undefined'){
 
@@ -101,19 +101,42 @@ export class Song {
           console.log(data);
           console.log('end data de spotify: ');
   				this.song.album.images[0].url = data.album.images[0].url;
+
+          console.log('punto - 0');
+
+          console.log('punto - 1');
+
+          this.song.name = navParams.get('data').metadata.music[0].title;
+          console.log('punto - 2');
+          this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
+          console.log('punto - 3');
+          this.song.album.name = navParams.get('data').metadata.music[0].album.name;
+          console.log('punto - 4');
+          this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
+          console.log('punto - 5');
+
+          this.loader.dismiss();
+          if(typeof navParams.get('data').metadata.music[0].external_metadata.deezer !== 'undefined')
+            this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
+
+          console.log('punto - 6');
+          if(typeof navParams.get('data').metadata.music[0].external_metadata.youtube !== 'undefined')
+            this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
+
+          console.log('punto - 7');
+          this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);
+
+
+          console.log('punto - 8');
+
   			},err=>{
+          console.log('errorrrr --->');
   				console.log(err)
   			});
 
       }
 
-			this.song.name = navParams.get('data').metadata.music[0].title;
-			this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
-			this.song.album.name = navParams.get('data').metadata.music[0].album.name;
-			this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
-			this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
-			this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
-			this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);
+
 		}
   }
 
