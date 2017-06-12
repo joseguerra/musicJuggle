@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { SelectPlan } from '../select-plan/select-plan';
 import { Login } from '../login/login';
-import {Profile} from '../profile/profile';
 import {Facebook} from '@ionic-native/facebook';
 import firebase from 'firebase';
-import {AngularFire,AngularFireAuth,AuthProviders,AuthMethods} from 'angularfire2';
+import {AngularFireAuth} from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {TabsPage} from '../tabs/tabs';
 
@@ -22,8 +21,7 @@ import {TabsPage} from '../tabs/tabs';
 })
 export class Register {	
 	selectPlan =  SelectPlan;
-	login =  Login;
-	profile   =  Profile;
+	login =  Login;	
   email: string;
   pass: string;
   tabs = TabsPage;
@@ -32,8 +30,7 @@ export class Register {
               public alertCtrl: AlertController,  
 							private facebook: Facebook,
               private googlePlus: GooglePlus,
-              private aFAuth:AngularFireAuth,
-              public angularFire: AngularFire,
+              private aFAuth:AngularFireAuth              
               ) {  	
   }
 

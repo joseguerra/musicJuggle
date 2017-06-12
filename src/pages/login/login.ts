@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
-
-import {Listen} from '../listen/listen';
-
 import {TabsPage} from '../tabs/tabs';
 import {Register} from '../register/register'; 
 import {Facebook} from '@ionic-native/facebook';
-import {AngularFire,AngularFireAuth,AuthProviders,AuthMethods} from 'angularfire2';
+import {AngularFireAuth,AuthProviders,AuthMethods} from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import firebase from 'firebase';
 
@@ -31,8 +28,7 @@ export class Login {
               public navParams: NavParams,
               public alertCtrl: AlertController,  
               public loadingCtrl: LoadingController,
-              private facebook: Facebook,
-              public angularFire: AngularFire,
+              private facebook: Facebook,              
               private googlePlus: GooglePlus,
               private aFAuth:AngularFireAuth
               ) {
