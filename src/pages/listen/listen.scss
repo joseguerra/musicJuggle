@@ -1,3 +1,180 @@
 page-listen {
 
+  ion-content{
+    background: #fafcff !important;
+  }
+
+  #crossfade {
+
+      width: 100%;
+      height: 100%;
+      background: url('../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00000.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      /*top: 0px;*/
+      left: 0px;
+      color: transparent;
+      opacity: 1;
+      z-index: 0;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-name: animate-particle;
+      animation-play-state: paused;
+  }
+
+  @keyframes animate-particle {
+
+    3.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00001.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    6.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00002.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    10% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00003.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    13.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00004.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    16.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00005.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    20% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00006.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    23.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00007.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    26.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00008.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    30% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00009.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    33.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00010.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    36.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00011.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    40% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00012.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    43.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00013.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    46.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00014.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    50% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00015.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    53.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00016.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    56.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00017.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    60% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00018.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    63.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00019.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    66.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00020.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    70% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00021.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    73.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00022.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    76.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00023.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    80% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00024.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    83.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00025.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    86.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00026.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    90% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00027.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    93.33333% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00028.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    96.66667% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00029.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    100% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00030.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+
 }

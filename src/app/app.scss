@@ -58,7 +58,7 @@
 }
 
 .text-grey-2{
-    color: #888;   
+    color: #888;
 }
 
 .uppercase{
@@ -134,11 +134,11 @@ h1, h2, h3, h4, h5{
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: #ddd 0px 0px 8px 1px;       
+    box-shadow: #ddd 0px 0px 8px 1px;
 }
 
 
-.default-button{ 
+.default-button{
     border-radius: 7px !important;
     font-weight: 600;
     padding: 20px 10px ;
@@ -175,7 +175,7 @@ ion-badge{
 }
 
 .item-md[detail-push] .item-inner, button.item-md:not([detail-none]) .item-inner, a.item-md:not([detail-none]) .item-inner{
-    
+
 }
 
 .card-no-padding{
@@ -186,7 +186,7 @@ ion-badge{
 }
 
 button{
-    text-transform: capitalize !important;
+    text-transform: none !important;
 }
 
 .button-small{
@@ -196,5 +196,21 @@ button{
 
 .button-grey{
     background: #999;
-    color: white 
+    color: white
+}
+
+.facebook-login{
+  background: rgb(69, 86, 152);
+  color: white;
+  border-color: rgb(69, 86, 152);
+  margin-bottom: 3vh;
+  text-transform: none !important;
+}
+
+.google-login{
+  background: #de1f00;
+  color: white;
+  border-color: rgb(69, 86, 152);
+  margin-bottom: 3vh;
+  text-transform: none !important;
 }

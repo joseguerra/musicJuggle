@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/map';
 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { Platform } from 'ionic-angular';
 
-import {DomSanitizer} from '@angular/platform-browser';
-import {MusixmatchProvider} from '../../app/musixmatch.provider';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MusixmatchProvider } from '../../app/musixmatch.provider';
+
+
 /**
  * Generated class for the Song page.
  *
@@ -18,7 +21,7 @@ import {MusixmatchProvider} from '../../app/musixmatch.provider';
 @IonicPage()
 @Component({
   selector: 'page-song',
-  templateUrl: 'song.html',  
+  templateUrl: 'song.html'
 })
 export class Song {
 	track: string;
@@ -42,78 +45,120 @@ export class Song {
 	};
 
   constructor(public navCtrl: NavController,
-							public navParams: NavParams, 
+							public navParams: NavParams,
 							public http: Http,
 							private appAvailability: AppAvailability,
 							public plt: Platform,
-							private iab: InAppBrowser,							
+							private iab: InAppBrowser,
 							public loadingCtrl: LoadingController,
 							public sanitizer:DomSanitizer,
-							public musixmatchProvider:MusixmatchProvider) {		
+							public musixmatchProvider:MusixmatchProvider,
+              ) {
 
+    console.log('class song');
 		this.loader = this.loadingCtrl.create({
-			content: 'Please wait...'			
+			content: 'Please wait...'
 		})
-		
-											
 
-		if(navParams.get('id')){			
+		if(navParams.get('id')){
+
+      console.log('viene por id');
+
 			if(navParams.get('recomendation')){
 				this.loader.present();
 				this.song = navParams.get('recomendation');
 				this.getLyrics(navParams.get('recomendation').artists[0].name,navParams.get('recomendation').name);
-			}
-			else if(navParams.get('song')){
+
+      }else if(navParams.get('song')){
 				this.loader.present();
-				this.song = navParams.get('song');				
+				this.song = navParams.get('song');
 				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);
-			}
-			else{
+
+      }else{
 				this.loader.present();
-				this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('id')).map(res => res.json()).subscribe(data => {		    
-					this.song = data;	
-					this.getLyrics(this.song.artists[0].name,this.song.name);						
+
+				this.http.get('http://54.214.246.7/track.php?q='+navParams.get('id')).map(res => res.json()).subscribe(data => {
+					this.song = data;
+					this.getLyrics(this.song.artists[0].name,this.song.name);
 				});
 			}
 
-			
-		}else{	
-			this.loader.present();	
-			this.http.get('https://api.spotify.com/v1/tracks/'+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
-				this.song.album.images[0].url = data.album.images[0].url;						    
-			},err=>{				
-				console.log(err)
-			});
-			
-			this.song.name = navParams.get('data').metadata.music[0].title;
-			this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
-			this.song.album.name = navParams.get('data').metadata.music[0].album.name;
-			this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
-			this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
-			this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
-			this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);						
+		}else{
+
+      console.log('NO viene por id -->>>>');
+
+			this.loader.present();
+
+      console.log(navParams.get('data'));
+
+      console.log('<<<<<----');
+
+      if(typeof navParams.get('data').metadata.music[0].external_metadata.spotify.track.id !== 'undefined'){
+
+  			this.http.get('http://54.214.246.7/track.php?q='+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
+
+          console.log('data de spotify: ');
+          console.log(data);
+          console.log('end data de spotify: ');
+  				this.song.album.images[0].url = data.album.images[0].url;
+
+          console.log('punto - 0');
+
+          console.log('punto - 1');
+
+          this.song.name = navParams.get('data').metadata.music[0].title;
+          console.log('punto - 2');
+          this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
+          console.log('punto - 3');
+          this.song.album.name = navParams.get('data').metadata.music[0].album.name;
+          console.log('punto - 4');
+          this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
+          console.log('punto - 5');
+
+          this.loader.dismiss();
+          if(typeof navParams.get('data').metadata.music[0].external_metadata.deezer !== 'undefined')
+            this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
+
+          console.log('punto - 6');
+          if(typeof navParams.get('data').metadata.music[0].external_metadata.youtube !== 'undefined')
+            this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
+
+          console.log('punto - 7');
+          this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);
+
+
+          console.log('punto - 8');
+
+  			},err=>{
+          console.log('errorrrr --->');
+  				console.log(err)
+  			});
+
+      }
+
+
 		}
   }
 
-	getLyrics(artistName,songName){		
+	getLyrics(artistName,songName){
 		this.musixmatchProvider.getSong(artistName,songName)
 		.subscribe(response =>{
 			if(response.message.header.available!=0){
-				this.track =  response.message.body.track_list[0].track.track_id;						
+				this.track =  response.message.body.track_list[0].track.track_id;
 				this.musixmatchProvider.getLyrics(this.track)
-				.subscribe(response =>{						
-					if(response.message.header.status_code==200){								
-						this.song.lyric =  response.message.body.lyrics.lyrics_body;												
-						this.loader.dismiss();							
+				.subscribe(response =>{
+					if(response.message.header.status_code==200){
+						this.song.lyric =  response.message.body.lyrics.lyrics_body;
+						this.loader.dismiss();
 					}
-					this.loader.dismiss();																												
-				},err=>{							
 					this.loader.dismiss();
-				});		
+				},err=>{
+					this.loader.dismiss();
+				});
 			}
-			this.loader.dismiss();																										
-		},err=>{					
-			this.loader.dismiss();	
+			this.loader.dismiss();
+		},err=>{
+			this.loader.dismiss();
 		});
 	}
 
@@ -124,22 +169,22 @@ export class Song {
 	launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string, track:string) {
 		let app: string;
 		if (this.plt.is('ios')) {
-			app = iosSchemaName;		
+			app = iosSchemaName;
 		} else if (this.plt.is('android')) {
-			app = androidPackageName;			
-		} else {				
-			window.open(httpUrl+track, '_system', 'location=no');				
+			app = androidPackageName;
+		} else {
+			window.open(httpUrl+track, '_system', 'location=no');
 			return;
 		}
 
 		this.appAvailability.check(app).then(
 			() => { // success callback
-				window.open(appUrl+track, '_system', 'location=no');				
-				//const browser = this.iab.create(appUrl);				
+				window.open(appUrl+track, '_system', 'location=no');
+				//const browser = this.iab.create(appUrl);
 			},
-			() => { // error callback					
-				window.open(httpUrl+track, '_system', 'location=no');				
-				//const browser = this.iab.create(httpUrl);			
+			() => { // error callback
+				window.open(httpUrl+track, '_system', 'location=no');
+				//const browser = this.iab.create(httpUrl);
 			}
 		);
 	}

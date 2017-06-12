@@ -1,7 +1,5 @@
 {
   "name": "musicJuggle",
   "app_id": "326163c5",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }
-

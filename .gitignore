@@ -19,6 +19,7 @@ npm-debug.log*
 coverage/
 dist/
 node_modules/
+www/build/*
 tmp/
 temp/
 hooks/
@@ -31,4 +32,3 @@ resources/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
-

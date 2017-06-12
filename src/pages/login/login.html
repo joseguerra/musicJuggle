@@ -9,8 +9,16 @@
 
 	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>
 
-	<button ion-button block outline class='facebook-login' (click)="facebookLogin()">{{ 'FACEBOOK' | translate }}</button>	
-	<button ion-button block class='default-button' (click)="googlePlusLogin()">{{ 'GOOGLE' | translate }}</button>	
+	<button ion-button block full icon-left class='default-button facebook-login' (click)="facebookLogin()">
+		<ion-icon name="ion-social-facebook"></ion-icon>
+		{{ 'CONECTATE_CON_FACEBOOK' | translate }}
+
+	</button>
+
+	<button ion-button block full icon-left class='default-button google-login' (click)="googlePlusLogin()">
+		<ion-icon name="ion-social-google"></ion-icon>
+		{{ 'CONECTATE_CON_GOOGLE' | translate }}
+	</button>
 
 	<h3> {{ 'INICIA_SESION' | translate }}</h3>
 
@@ -25,11 +33,14 @@
 			<ion-label floating>{{ 'CONTRASENA' | translate }}</ion-label>
 			<ion-input type="password" value="" [(ngModel)]="pass"></ion-input>
 		</ion-item>
- 
+
 
 	</ion-list>
 
-	<button ion-button block class='default-button' (click)="login()">{{ 'INICIAR_SESION' | translate }}</button>
+	<button ion-button block class='default-button' icon-right (click)="login()">
+		{{ 'INICIAR_SESION' | translate }}
+		<ion-icon name="arrow-forward"></ion-icon>
+	</button>
 
 	<p text-center>{{ 'NO_TIENES_CUENTA' | translate }} <strong><span (click)="goToRegister()"> {{ 'REGISTRATE' | translate }}</span></strong></p>
 

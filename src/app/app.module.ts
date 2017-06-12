@@ -19,7 +19,7 @@ import { File } from '@ionic-native/file';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
-/*Firebase*/ 
+/*Firebase*/
 import { AngularFireModule } from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {Facebook} from '@ionic-native/facebook';
@@ -46,12 +46,12 @@ import { Song } from '../pages/song/song';
 import { SearchResults } from '../pages/search-results/search-results';
 import { NoResults } from '../pages/no-results/no-results';
 
-import {ListenProvider} from '../pages/listen/listen.provider';
+import { ListenProvider } from '../pages/listen/listen.provider';
+
 import {FirebaseProvider} from '../app/firebase.provider';
 import {MusixmatchProvider} from '../app/musixmatch.provider';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import {TruncatePipe} from './truncate.pipe';
-
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -99,14 +99,13 @@ export function createTranslateLoader(http: Http) {
     Song,
     SearchResults,
     NoResults,
-    TruncatePipe,    
+    TruncatePipe
   ],
   imports: [
-    
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ionic2RatingModule,  
+    Ionic2RatingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     CloudModule.forRoot(cloudSettings),
     IonicStorageModule.forRoot(),
@@ -154,7 +153,7 @@ export function createTranslateLoader(http: Http) {
     SearchResults,
     NoResults
   ],
-  providers: [    
+  providers: [
     GooglePlus,
     Facebook,
     ListenProvider,
@@ -162,7 +161,7 @@ export function createTranslateLoader(http: Http) {
     MusixmatchProvider,
     StatusBar,
     SplashScreen,
-    MediaPlugin, 
+    MediaPlugin,
     Transfer,
     AppAvailability,
     InAppBrowser,
