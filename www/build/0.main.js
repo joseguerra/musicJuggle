@@ -1,13 +1,13 @@
 webpackJsonp([0],{
 
-/***/ 1042:
+/***/ 1031:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__intro__ = __webpack_require__(1058);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__intro__ = __webpack_require__(1047);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IntroModule", function() { return IntroModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,14 +41,14 @@ IntroModule = __decorate([
 
 /***/ }),
 
-/***/ 1058:
+/***/ 1047:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(242);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Intro; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -97,7 +97,7 @@ __decorate([
 Intro = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-intro',template:/*ion-inline-start:"/Volumes/Sin título 2/tmp/musicJuggle/src/pages/intro/intro.html"*/'<ion-slides pager="true">\n\n  <ion-slide class="slide-1" text-center>\n\n  	<div text-right padding-top padding-right class="omitir" (click)="goToHome()">\n  		<a>Omitir</a>\n  	</div>\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n  	<br>\n    <img src="assets/img/custom/tutorial_screen/1-on boarding 1@3x.png" class="mj-fondo" />\n\n    <br>\n    Escuchá las canciones que quieras\n\n\n	<ion-fab right bottom>\n		<button ion-fab (click)="goToSlide(1)"><ion-icon name="arrow-forward"></ion-icon></button>\n	</ion-fab>\n\n  </ion-slide>\n\n  <ion-slide class="slide-2" text-center>\n\n  	<div text-right padding-top padding-right class="omitir" (click)="goToHome()">\n  		<a>Omitir</a>\n  	</div>\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n    <img src="assets/img/custom/tutorial_screen/fondo_tutorial_2@3x.png" class="mj-fondo2" />\n\n    <div class="text-slide-2">\n	    Obtené toda la información que estás buscando.<br>\n	    También podes escribirnos.<br>\n	    Nos encanta hablar de música\n	 </div>\n\n	<ion-fab right bottom>\n		<button ion-fab (click)="goToSlide(2)"><ion-icon name="arrow-forward"></ion-icon></button>\n	</ion-fab>\n\n  </ion-slide>\n\n  <ion-slide>\n\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n    <img src="assets/img/custom/tutorial_screen/fondo_tutorial_3@3x.png" class="mj-fondo3" />\n\n    <div class="text-slide-3" padding-right padding-left>\n	    Conseguí la licencia.\n	    <br><br>\n	    <button ion-button block class=\'default-button\' full icon-right (click)="goToHome()">\n	    	Empezar <ion-icon name="arrow-forward"></ion-icon>\n	    </button>\n	 </div>\n\n\n\n\n\n  </ion-slide>\n\n\n</ion-slides>\n'/*ion-inline-end:"/Volumes/Sin título 2/tmp/musicJuggle/src/pages/intro/intro.html"*/,
+        selector: 'page-intro',template:/*ion-inline-start:"C:\ionic2\musicJuggle\src\pages\intro\intro.html"*/'<ion-slides pager="true">\n\n\n\n  <ion-slide class="slide-1" text-center>\n\n\n\n  	<div text-right padding-top padding-right class="omitir" (click)="goToHome()">\n\n  		<a>Omitir</a>\n\n  	</div>\n\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n\n\n  	<br>\n\n    <img src="assets/img/custom/tutorial_screen/1-on boarding 1@3x.png" class="mj-fondo" />\n\n\n\n    <br>\n\n    Escuchá las canciones que quieras\n\n\n\n\n\n	<ion-fab right bottom>\n\n		<button ion-fab (click)="goToSlide(1)"><ion-icon name="arrow-forward"></ion-icon></button>\n\n	</ion-fab>\n\n\n\n  </ion-slide>\n\n\n\n  <ion-slide class="slide-2" text-center>\n\n\n\n  	<div text-right padding-top padding-right class="omitir" (click)="goToHome()">\n\n  		<a>Omitir</a>\n\n  	</div>\n\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n\n\n    <img src="assets/img/custom/tutorial_screen/fondo_tutorial_2@3x.png" class="mj-fondo2" />\n\n\n\n    <div class="text-slide-2">\n\n	    Obtené toda la información que estás buscando.<br>\n\n	    También podes escribirnos.<br>\n\n	    Nos encanta hablar de música\n\n	 </div>\n\n\n\n	<ion-fab right bottom>\n\n		<button ion-fab (click)="goToSlide(2)"><ion-icon name="arrow-forward"></ion-icon></button>\n\n	</ion-fab>\n\n\n\n  </ion-slide>\n\n\n\n  <ion-slide>\n\n\n\n  	<img src="assets/img/custom/tutorial_screen/svg/MusicJuggle.svg" class="mj-logo"/>\n\n\n\n    <img src="assets/img/custom/tutorial_screen/fondo_tutorial_3@3x.png" class="mj-fondo3" />\n\n\n\n    <div class="text-slide-3" padding-right padding-left>\n\n	    Conseguí la licencia.\n\n	    <br><br>\n\n	    <button ion-button block class=\'default-button\' full icon-right (click)="goToHome()">\n\n	    	Empezar <ion-icon name="arrow-forward"></ion-icon>\n\n	    </button>\n\n	 </div>\n\n\n\n\n\n\n\n\n\n\n\n  </ion-slide>\n\n\n\n\n\n</ion-slides>\n\n'/*ion-inline-end:"C:\ionic2\musicJuggle\src\pages\intro\intro.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
 ], Intro);
