@@ -37,13 +37,11 @@ export class Song {
 		artists:[{
 			name:''
 		}],
-		genres:[{
-			name:''
-		}],
 		external_ids:{
 			isrc:''
 		},
 		release_date:'',
+		genres: '',
 		id:'',
 		deezer:'',
 		itunes:'',
@@ -73,15 +71,17 @@ export class Song {
 
 			if(navParams.get('recomendation')){
 				this.loader.present();
+				console.log(navParams.get('recomendation'));
 				this.song = navParams.get('recomendation');
+
 				this.getLyrics(navParams.get('recomendation').artists[0].name,navParams.get('recomendation').name);
 
-      }else if(navParams.get('song')){
+			}else if(navParams.get('song')){				
 				this.loader.present();
-				this.song = navParams.get('song');
+				this.song = navParams.get('song');									
+				
 				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);
-
-      }else{
+			}else{
 				this.loader.present();
 
 				this.http.get('http://54.214.246.7/track.php?q='+navParams.get('id')).map(res => res.json()).subscribe(data => {
@@ -135,7 +135,7 @@ export class Song {
 
 
           console.log('punto - 8');
-		  this.song.genres[0].name = navParams.get('data').metadata.music[0].genres[0].name;
+		  this.song.genres = navParams.get('data').metadata.music[0].genres[0].name;
 
 		  console.log('punto - 9');
 		  this.song.release_date = navParams.get('data').metadata.music[0].release_date;

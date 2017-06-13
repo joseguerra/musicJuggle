@@ -7,6 +7,7 @@ import {Login} from '../pages/login/login'
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from 'ionic-angular';
+import {TabsPage} from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,7 +15,7 @@ import { LoadingController } from 'ionic-angular';
 
 export class MyApp {
 
-  rootPage:any = Login;
+  rootPage:any = TabsPage;
   loader: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, translate: TranslateService,  public loadingCtrl: LoadingController, public storage: Storage) {
@@ -27,7 +28,7 @@ export class MyApp {
       this.storage.get('introShown').then((result) => {
 
         if(result){
-          this.rootPage = Login;
+          this.rootPage = TabsPage;
         } else {
           this.rootPage = 'Intro';
           this.storage.set('introShown', true);
