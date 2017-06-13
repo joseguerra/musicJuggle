@@ -23,7 +23,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AngularFireModule } from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {Facebook} from '@ionic-native/facebook';
-import firebase from 'firebase';
 
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Song } from '../song/song';
 import {FirebaseProvider} from '../../app/firebase.provider';
 /**
@@ -18,6 +18,7 @@ export class TopTen {
   songs: any[];
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              public alertCtrl: AlertController, 
               public firebaseProvider:FirebaseProvider,
               public loadingCtrl: LoadingController) {
                 
@@ -31,9 +32,19 @@ export class TopTen {
       loader.dismiss();                             
     },
     err=>{
-      console.log(err);  
+      loader.dismiss();
+      this.showAlert(err,"Error");          
     }
     );
+  }
+
+  showAlert(message,title) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   openSong(song){     

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { SelectPlan } from '../select-plan/select-plan';
 import { Login } from '../login/login';
 import {Facebook} from '@ionic-native/facebook';
@@ -29,6 +29,7 @@ export class Register {
 							public navParams: NavParams,
               public alertCtrl: AlertController,  
 							private facebook: Facebook,
+              public loadingCtrl: LoadingController,
               private googlePlus: GooglePlus,
               private aFAuth:AngularFireAuth              
               ) {  	
@@ -48,17 +49,25 @@ export class Register {
   }
 
   async register(){
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+
     try{
         this.aFAuth.createUser({
             email: this.email,
             password: this.pass
         }).then((result)=>{
+          loader.dismiss();
           this.navCtrl.setRoot(this.tabs);
         }).catch((e)=>{
-           this.showAlert(e,"Error");
+          loader.dismiss();
+          this.showAlert(e,"Error");
         });              
     }catch(e){
-       this.showAlert(e,"Error");
+      loader.dismiss();
+      this.showAlert(e,"Error");
     }
     
   }

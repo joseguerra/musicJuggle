@@ -51,6 +51,12 @@ export class Login {
   }
 
   login(){
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+
+    loader.present();
+
     try{
       this.aFAuth.login({
             email: this.email,
@@ -60,11 +66,14 @@ export class Login {
           provider: AuthProviders.Password,
           method: AuthMethods.Password,
         }).then((fino)=>{
+          loader.dismiss();
           this.navCtrl.setRoot(this.tabs);
         }).catch((e)=>{
+          loader.dismiss();
           this.showAlert(e,"Error");                
         })                
     }catch(e){
+      loader.dismiss();
       this.showAlert(e,"Error");       
     }
   }

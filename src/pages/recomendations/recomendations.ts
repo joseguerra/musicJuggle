@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Song } from '../song/song';
 import {FirebaseProvider} from '../../app/firebase.provider';
 /**
@@ -19,6 +19,7 @@ export class Recomendations {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public firebaseProvider:FirebaseProvider,
+              public alertCtrl: AlertController, 
               public loadingCtrl: LoadingController) {
       let loader = this.loadingCtrl.create({
         content: 'Please wait...'			
@@ -30,8 +31,18 @@ export class Recomendations {
       this.recomendations = recomendations      
     },
     err=>{
-      console.log(err);  
+      loader.dismiss();
+      this.showAlert(err,"Error"); 
     });
+  }
+
+   showAlert(message,title) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
  	openSong(recomendation){     

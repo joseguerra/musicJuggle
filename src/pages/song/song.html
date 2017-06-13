@@ -42,9 +42,9 @@
 	      <p class="text-info">
 	      	{{ 'ARTISTA' | translate }}: {{song?.artists[0].name}} <br>
 	      	{{ 'ALBUM' | translate }}: {{song?.album.name}} <br>
-	      	{{ 'ANO' | translate }}: 2009 <br>
-	      	{{ 'GENERO' | translate }}: Grounge <br>
-	      	ISRC JM K40 14  00212
+	      	{{ 'ANO' | translate }}: {{song?.release_date}} <br>
+	      	{{ 'GENERO' | translate }}: {{song?.genres[0].name}} <br>
+	      	{{song?.external_ids.isrc}}
 	      </p>
 
 	      <hr *ngIf="song?.lyric">

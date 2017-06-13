@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 import * as utf8 from 'utf8';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Song } from '../song/song';
 import {NoResults} from '../no-results/no-results';
 import { MediaPlugin} from '@ionic-native/media';
@@ -40,6 +40,7 @@ export class Listen {
 				public navParams: NavParams,
 				public alertCtrl: AlertController,
 				public media: MediaPlugin,
+        public loadingCtrl: LoadingController,
 				public listen: ListenProvider,
 				public plt: Platform,
 				private transfer: Transfer,
@@ -47,7 +48,7 @@ export class Listen {
 				) {
 	}
 
-	ionViewDidEnter() {
+	ionViewWillEnter() {
 
     this.animationStatus = "paused";
 
@@ -66,13 +67,9 @@ export class Listen {
     this.signature = this.sign(stringToSign,this.listen.accessSecret);
   }
 
-  recordAudio(){
+  recordAudio(){    
 
-    console.log('recordaudio');
-
-    this.animationStatus = "initial";
-
-    console.log('recordaudio2');
+    this.animationStatus = "initial";    
 
     var path = null;
     var file_name = "new2";
@@ -87,14 +84,9 @@ export class Listen {
 
       file_extension = ".aac";
       path = this.file.externalRootDirectory;
-    }
-
-    console.log('recordaudio3 ' + path);
+    }    
 
     this.file.createFile(path, file_name + file_extension, true).then((fileEntry) => {
-
-    	console.log('recordaudio4 '+  fileEntry);
-    	console.log('recordaudio5 '+fileEntry.toURL());
 
       if(this.plt.is('ios')){
         var audio = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') +	file_name + file_extension);
@@ -141,17 +133,23 @@ export class Listen {
 	}
 
 	private postData(formData: FormData) {
-		this.listen.postData(formData).subscribe(
-      data => {
-				if(data.status.code==0){
-          console.log(data);
-          this.navCtrl.push(this.song, {'id':null,'data':data});
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
 
-          console.log('finish');
-				}else
-					this.navCtrl.push(this.noResults);
-			},
+		this.listen.postData(formData).subscribe(
+      data => {        
+				if(data.status.code==0){
+          loader.dismiss();          
+          this.navCtrl.push(this.song, {'id':null,'data':data});          
+				}else{
+            loader.dismiss();            
+            this.navCtrl.push(this.noResults);
+        }
+      },
       err => {
+        loader.dismiss();        
         this.navCtrl.push(this.noResults);
       }
     );

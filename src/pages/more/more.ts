@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Glosary } from '../glosary/glosary';
 import { TopTen } from '../top-ten/top-ten';
-import { WorkWithUs } from '../work-with-us/work-with-us';
 import { SelectPlan } from '../select-plan/select-plan';
 import { Terms } from '../terms/terms';
 import { Recomendations } from '../recomendations/recomendations';

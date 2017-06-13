@@ -37,6 +37,13 @@ export class Song {
 		artists:[{
 			name:''
 		}],
+		genres:[{
+			name:''
+		}],
+		external_ids:{
+			isrc:''
+		},
+		release_date:'',
 		id:'',
 		deezer:'',
 		itunes:'',
@@ -128,7 +135,13 @@ export class Song {
 
 
           console.log('punto - 8');
+		  this.song.genres[0].name = navParams.get('data').metadata.music[0].genres[0].name;
 
+		  console.log('punto - 9');
+		  this.song.release_date = navParams.get('data').metadata.music[0].release_date;
+
+		  console.log('punto - 10');
+		  this.song.external_ids.isrc = navParams.get('data').metadata.music[0].external_ids.isrc;
   			},err=>{
           console.log('errorrrr --->');
   				console.log(err)
