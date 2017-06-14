@@ -15,7 +15,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 export class MyApp {
 
-  rootPage:any = TabsPage;
+  rootPage:any = Login;
   loader: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, translate: TranslateService,  public loadingCtrl: LoadingController, public storage: Storage) {
@@ -28,7 +28,7 @@ export class MyApp {
       this.storage.get('introShown').then((result) => {
 
         if(result){
-          this.rootPage = TabsPage;
+          this.rootPage = Login;
         } else {
           this.rootPage = 'Intro';
           this.storage.set('introShown', true);

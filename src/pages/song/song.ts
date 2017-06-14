@@ -59,16 +59,12 @@ export class Song {
 							public sanitizer:DomSanitizer,
 							public musixmatchProvider:MusixmatchProvider,
               ) {
-
-    console.log('class song');
+    
 		this.loader = this.loadingCtrl.create({
 			content: 'Please wait...'
 		})
 
 		if(navParams.get('id')){
-
-      console.log('viene por id');
-
 			if(navParams.get('recomendation')){
 				this.loader.present();
 				console.log(navParams.get('recomendation'));
@@ -76,11 +72,12 @@ export class Song {
 
 				this.getLyrics(navParams.get('recomendation').artists[0].name,navParams.get('recomendation').name);
 
-			}else if(navParams.get('song')){				
+			}else if(navParams.get('song')){
+							
 				this.loader.present();
 				this.song = navParams.get('song');									
 				
-				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);
+				this.getLyrics(navParams.get('song').artists[0].name,navParams.get('song').name);				
 			}else{
 				this.loader.present();
 
@@ -91,67 +88,72 @@ export class Song {
 			}
 
 		}else{
-
-      console.log('NO viene por id -->>>>');
-
 			this.loader.present();
+			try{
+				this.song.name = navParams.get('data').metadata.music[0].title;
+			}catch(e){						
+			} 
+			try{
+				this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;          
+			}catch(e){						
+			} 
+			try{
+				this.song.album.name = navParams.get('data').metadata.music[0].album.name;          
+			}catch(e){						
+			}
+			try{  
+				this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
+			}catch(e){						
+			} 
+			try{  
+				this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
+			}catch(e){						
+			}
+			try{  
+				this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
+			}catch(e){						
+			}
+			try{ 
+				this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);
+			}catch(e){						
+			}
+			try{
+				this.song.genres = navParams.get('data').metadata.music[0].genres[0].name;
+			}catch(e){						
+			}
+			try{          		  
+				this.song.release_date = navParams.get('data').metadata.music[0].release_date;
+			}catch(e){						
+			}
+			try{          		  		  
+				this.song.external_ids.isrc = navParams.get('data').metadata.music[0].external_ids.isrc;
+			}catch(e){						
+			}
 
-      console.log(navParams.get('data'));
-
-      console.log('<<<<<----');
-
-      if(typeof navParams.get('data').metadata.music[0].external_metadata.spotify.track.id !== 'undefined'){
-
-  			this.http.get('http://54.214.246.7/track.php?q='+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
-
-          console.log('data de spotify: ');
-          console.log(data);
-          console.log('end data de spotify: ');
-  				this.song.album.images[0].url = data.album.images[0].url;
-
-          console.log('punto - 0');
-
-          console.log('punto - 1');
-
-          this.song.name = navParams.get('data').metadata.music[0].title;
-          console.log('punto - 2');
-          this.song.artists[0].name = navParams.get('data').metadata.music[0].artists[0].name;
-          console.log('punto - 3');
-          this.song.album.name = navParams.get('data').metadata.music[0].album.name;
-          console.log('punto - 4');
-          this.song.id =  navParams.get('data').metadata.music[0].external_metadata.spotify.track.id;
-          console.log('punto - 5');
-
-          this.loader.dismiss();
-          if(typeof navParams.get('data').metadata.music[0].external_metadata.deezer !== 'undefined')
-            this.song.deezer =  navParams.get('data').metadata.music[0].external_metadata.deezer.track.id;
-
-          console.log('punto - 6');
-          if(typeof navParams.get('data').metadata.music[0].external_metadata.youtube !== 'undefined')
-            this.song.youtube =   this.sanitizer.bypassSecurityTrustResourceUrl("http://www.youtube.com/embed/"+navParams.get('data').metadata.music[0].external_metadata.youtube.vid);
-
-          console.log('punto - 7');
-          this.getLyrics(navParams.get('data').metadata.music[0].artists[0].name,navParams.get('data').metadata.music[0].title);
-
-
-          console.log('punto - 8');
-		  this.song.genres = navParams.get('data').metadata.music[0].genres[0].name;
-
-		  console.log('punto - 9');
-		  this.song.release_date = navParams.get('data').metadata.music[0].release_date;
-
-		  console.log('punto - 10');
-		  this.song.external_ids.isrc = navParams.get('data').metadata.music[0].external_ids.isrc;
-  			},err=>{
-          console.log('errorrrr --->');
-  				console.log(err)
-  			});
-
-      }
+			try{ 
+				if(typeof navParams.get('data').metadata.music[0].external_metadata.spotify.track.id !== 'undefined'){
 
 
+					this.http.get('http://54.214.246.7/track.php?q='+navParams.get('data').metadata.music[0].external_metadata.spotify.track.id).map(res => res.json()).subscribe(data => {
+
+					console.log('data de spotify: ');
+					console.log(data);
+					console.log('end data de spotify: ');
+							this.song.album.images[0].url = data.album.images[0].url;
+
+				
+					this.loader.dismiss();          
+					},err=>{
+						this.loader.dismiss();
+						console.log('errorrrr --->');
+						console.log(err)
+					});
+				}
+			}catch(e){
+				this.loader.dismiss();   						
+			}
 		}
-  }
+  	}
 
 	getLyrics(artistName,songName){
 		this.musixmatchProvider.getSong(artistName,songName)

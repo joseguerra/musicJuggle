@@ -39,13 +39,12 @@
 
 			<rating [(ngModel)]="song" readOnly="true" val="3" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false">4</rating>
 
-	      <p class="text-info">
-	      	{{ 'ARTISTA' | translate }}: {{song?.artists[0].name}} <br>
-	      	{{ 'ALBUM' | translate }}: {{song?.album.name}} <br>
-	      	{{ 'ANO' | translate }}: {{song?.release_date}} <br>
-	      	{{ 'GENERO' | translate }}: {{song?.genres}} <br>
-	      	{{song?.external_ids.isrc}}
-	      </p>
+	      <p *ngIf="song?.artists[0].name" class="text-info">
+	      	{{ 'ARTISTA' | translate }}: {{song?.artists[0].name}}</p>
+	      	<p *ngIf="song?.album.name" class="text-info">{{ 'ALBUM' | translate }}: {{song?.album.name}} </p>	
+	      	<p *ngIf="song?.release_date" class="text-info">{{ 'ANO' | translate }}: {{song?.release_date}} </p>
+	      	<p *ngIf="song?.genres" class="text-info">{{ 'GENERO' | translate }}: {{song?.genres}}</p>
+	      	<p *ngIf="song?.external_ids.isrc" class="text-info">{{song?.external_ids.isrc}}</p>	   
 
 	      <hr *ngIf="song?.lyric">
 
