@@ -9,8 +9,9 @@ import {  AngularFire, FirebaseListObservable } from 'angularfire2';
 @Injectable()
 export class FirebaseProvider {
   song: FirebaseListObservable<any[]>;
+  profile: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire) {    
+  constructor(private af: AngularFire ) {    
   }
   
   getTopTen(){
@@ -24,7 +25,44 @@ export class FirebaseProvider {
       return this.song;  
   }
 
-   
-  
+  getProfile(email){
+    
+      this.profile = this.af.database.list('/user',{
+        query: {
+          orderByChild: 'email',
+          equalTo: email        
+        }
+      }) as FirebaseListObservable<any[]>;      
+      return this.profile;  
+  }
 
+  setProfile(name,email,company){
+      const itemObservable = this.af.database.list('/user');
+      itemObservable.push({ 
+        name: name,
+        fullName: "",
+        email: email,
+        phone: "",
+        country: "",
+        company: company,
+        work: "", 
+      })
+  }
+
+  updateProfile(name,fullName,email,phone,country,company,work,key){
+
+
+      const itemObservable = this.af.database.list('/user');
+      itemObservable.update(key,{ 
+        name: name,
+        fullName: fullName,
+        email: email,
+        phone: phone,
+        country: country,
+        company: company,
+        work: work,                
+      }).then(data=>{
+        return data;
+      })
+  }
 }

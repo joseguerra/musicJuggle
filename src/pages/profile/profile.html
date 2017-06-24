@@ -10,7 +10,7 @@
     <ion-title>{{ 'PROFILE' | translate }}</ion-title>
   
 		<ion-buttons end>
-			<button ion-button icon-only (click)="openModal()">
+			<button ion-button icon-only (click)="save()">
 				{{ 'SAVE' | translate }} &nbsp;
 			</button>
 		</ion-buttons>
@@ -45,22 +45,22 @@
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'TELEFONO' | translate }}</ion-label>
-			<ion-input type="text" value=""></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="phone"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'PAIS' | translate }}</ion-label>
-			<ion-input type="text" value=""></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="country"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'COMPANIA' | translate }}</ion-label>
-			<ion-input type="text" value=""></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="company"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'PUESTO_DE_TRABAJO' | translate }}</ion-label>
-			<ion-input type="text" value=""></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="work"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding style="margin-top: 10px;">
@@ -110,6 +110,6 @@
 		</ion-item>
 	</ion-list>
 
-	<button ion-button block class='default-button'>{{ 'SAVE' | translate }}</button>
+	<button ion-button block class='default-button' (click)="save()">{{ 'SAVE' | translate }}</button>
 
 </ion-content>

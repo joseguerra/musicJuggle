@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { SelectPlan } from '../select-plan/select-plan';
 import { Login } from '../login/login';
@@ -7,6 +8,7 @@ import firebase from 'firebase';
 import {AngularFireAuth} from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import {TabsPage} from '../tabs/tabs';
+import {FirebaseProvider} from '../../app/firebase.provider';
 
 /**
  * Generated class for the Register page.
@@ -24,6 +26,8 @@ export class Register {
 	login =  Login;	
   email: string;
   pass: string;
+  name:string;
+  company:string;  
   tabs = TabsPage;
   constructor(public navCtrl: NavController,
 							public navParams: NavParams,
@@ -31,7 +35,9 @@ export class Register {
 							private facebook: Facebook,
               public loadingCtrl: LoadingController,
               private googlePlus: GooglePlus,
-              private aFAuth:AngularFireAuth              
+              private aFAuth:AngularFireAuth,
+              public storage: Storage,
+              public firebaseProvider:FirebaseProvider,              
               ) {  	
   }
 
@@ -53,12 +59,16 @@ export class Register {
       content: "Please wait..."
     });
     loader.present();
-
+    this.email = this.email.toLowerCase();
     try{
         this.aFAuth.createUser({
             email: this.email,
             password: this.pass
         }).then((result)=>{
+          this.storage.set('email', this.email);
+          this.firebaseProvider.setProfile(this.name,this.email,this.company)
+
+
           loader.dismiss();
           this.navCtrl.setRoot(this.tabs);
         }).catch((e)=>{
@@ -85,11 +95,13 @@ export class Register {
 
   facebookLogin(){
     this.facebook.login(['email']).then((response)=>{
-      const fc = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-      firebase.auth().signInWithCredential(fc).then((fs)=>{
-        this.navCtrl.setRoot(this.tabs);
-      }).catch((e)=>{
-        console.log(e);
+      this.facebook.getLoginStatus().then((response) => {
+            if(response.status == "connected") {
+              this.facebook.api('/' + response.authResponse.userID + '?fields=id,name,email',[]).then((response) => {
+                this.name = response.name;
+                this.email = response.email;
+              })
+            }
       })
     }).catch((e)=>{
       console.log(e)

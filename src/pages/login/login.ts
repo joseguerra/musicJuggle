@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import {TabsPage} from '../tabs/tabs';
 import {Register} from '../register/register'; 
@@ -30,7 +31,8 @@ export class Login {
               public loadingCtrl: LoadingController,
               private facebook: Facebook,              
               private googlePlus: GooglePlus,
-              private aFAuth:AngularFireAuth
+              private aFAuth:AngularFireAuth,
+              public storage: Storage,
               ) {
 
   }
@@ -66,6 +68,7 @@ export class Login {
           provider: AuthProviders.Password,
           method: AuthMethods.Password,
         }).then((fino)=>{
+          this.storage.set('email', this.email);
           loader.dismiss();
           this.navCtrl.setRoot(this.tabs);
         }).catch((e)=>{
@@ -85,13 +88,23 @@ export class Login {
     facebookLogin(){
     this.facebook.login(['email']).then((response)=>{
       const fc = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
-      firebase.auth().signInWithCredential(fc).then((fs)=>{
-        this.navCtrl.setRoot(this.tabs);
-      }).catch((e)=>{
-        console.log(e);
-      })
+      this.facebook.getLoginStatus().then((response) => {
+        if(response.status == "connected") {
+          this.facebook.api('/' + response.authResponse.userID + '?fields=id,name,email',[]).then((response) => {                        
+              console.log(response.email)
+              this.storage.set('email', response.email);
+              firebase.auth().signInWithCredential(fc).then((fs)=>{
+                this.navCtrl.setRoot(this.tabs);
+              }).catch((e)=>{
+                this.showAlert("Intentelo luego ","Error de auth"); 
+                console.log("1");
+              })
+          })
+        }
+      })      
     }).catch((e)=>{
-      console.log(e)
+      this.showAlert("Intentelo luego","Error de auth"); 
+      console.log("2")
     })
   }
 

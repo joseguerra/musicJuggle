@@ -3,6 +3,12 @@
     <name>musicJuggle</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <universal-links>
+        <host name="DYNAMIC_LINK_DOMAIN" scheme="https" />
+        <host name="AUTH_DOMAIN" scheme="https">
+            <path url="/__/auth/callback"/>
+        </host>
+    </universal-links>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
@@ -61,10 +67,7 @@
     <plugin name="cordova-plugin-appavailability" spec="~0.4.2" />
     <plugin name="cordova-plugin-console" spec="1.0.5" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.0">
-        <variable name="APP_ID" value="314805412283528" />
-        <variable name="APP_NAME" value="musicJuggle" />
-    </plugin>
+
     <plugin name="cordova-plugin-file-transfer" spec="~1.6.3" />
     <plugin name="cordova-plugin-filepath" spec="~1.0.2" />
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
