@@ -13,20 +13,15 @@ import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { MediaPlugin } from '@ionic-native/media';
 import { Ionic2RatingModule } from 'ionic2-rating';
-
 import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
-/*Firebase*/
 import { AngularFireModule } from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
-import {Facebook} from '@ionic-native/facebook';
-
+import { Facebook } from '@ionic-native/facebook';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
-
 import { Register } from '../pages/register/register';
 import { More } from '../pages/more/more';
 import { Profile } from '../pages/profile/profile';
@@ -38,19 +33,18 @@ import { Glosary } from '../pages/glosary/glosary';
 import { TopTen } from '../pages/top-ten/top-ten';
 import { WorkWithUs } from '../pages/work-with-us/work-with-us';
 import { Terms } from '../pages/terms/terms';
+import { Quotation } from '../pages/quotation/quotation';
 import { Recomendations } from '../pages/recomendations/recomendations';
 import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
 import { Login } from '../pages/login/login';
 import { Song } from '../pages/song/song';
 import { SearchResults } from '../pages/search-results/search-results';
 import { NoResults } from '../pages/no-results/no-results';
-
 import { ListenProvider } from '../pages/listen/listen.provider';
-
-import {FirebaseProvider} from '../app/firebase.provider';
-import {MusixmatchProvider} from '../app/musixmatch.provider';
+import { FirebaseProvider } from '../app/firebase.provider';
+import { MusixmatchProvider } from '../app/musixmatch.provider';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import {TruncatePipe} from './truncate.pipe';
+import { TruncatePipe } from './truncate.pipe';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -91,6 +85,7 @@ export function createTranslateLoader(http: Http) {
     TopTen,
     WorkWithUs,
     Terms,
+    Quotation,
     Recomendations,
     ModalOutBudget,
     Register,
@@ -150,7 +145,8 @@ export function createTranslateLoader(http: Http) {
     Login,
     Song,
     SearchResults,
-    NoResults
+    NoResults,
+    Quotation
   ],
   providers: [
     GooglePlus,

@@ -11,6 +11,7 @@ import { Platform } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MusixmatchProvider } from '../../app/musixmatch.provider';
 
+import { Quotation } from '../quotation/quotation'; 
 
 /**
  * Generated class for the Song page.
@@ -49,6 +50,8 @@ export class Song {
 		lyric:''
 	};
 
+	quotation = Quotation;
+	
   constructor(public navCtrl: NavController,
 							public navParams: NavParams,
 							public http: Http,
@@ -216,4 +219,7 @@ export class Song {
 		this.launchExternalApp('instagram://', 'deezer.android.app', 'deezer://www.deezer.com/track/', 'http://www.deezer.com/track/',this.song.deezer);
 	}
 
+	goToQuotation(){
+		this.navCtrl.setRoot(this.quotation);
+	}
 }
