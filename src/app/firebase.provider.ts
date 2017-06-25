@@ -27,7 +27,7 @@ export class FirebaseProvider {
 
   getProfile(email){
     
-      this.profile = this.af.database.list('/user',{
+      this.profile = this.af.database.list('/cuentas',{
         query: {
           orderByChild: 'email',
           equalTo: email        
@@ -36,31 +36,41 @@ export class FirebaseProvider {
       return this.profile;  
   }
 
-  setProfile(name,email,company){
-      const itemObservable = this.af.database.list('/user');
+  setProfile(nombre,email,empresa){
+      const itemObservable = this.af.database.list('/cuentas');
       itemObservable.push({ 
-        name: name,
-        fullName: "",
+        apellido: "",
         email: email,
-        phone: "",
-        country: "",
-        company: company,
-        work: "", 
+        empresa: empresa,
+        nombre: nombre,
+        otros: "",
+        pais: "",
+        plan: "",
+        producciones:"",
+        puesto: "",
+        reproducciones: "",
+        telefono: "",                
+        uso: "", 
       })
   }
 
-  updateProfile(name,fullName,email,phone,country,company,work,key){
+  updateProfile(apellido,email,empresa,nombre,otros,pais,plan,producciones,puesto,reproducciones,telefono,uso,key){
 
 
-      const itemObservable = this.af.database.list('/user');
+      const itemObservable = this.af.database.list('/cuentas');
       itemObservable.update(key,{ 
-        name: name,
-        fullName: fullName,
+        apellido: apellido,
         email: email,
-        phone: phone,
-        country: country,
-        company: company,
-        work: work,                
+        empresa: empresa,
+        nombre: nombre,
+        otros: otros,
+        pais: pais,
+        plan: plan,
+        producciones:producciones,
+        puesto: puesto,
+        reproducciones: reproducciones,
+        telefono: telefono,                
+        uso: uso,              
       }).then(data=>{
         return data;
       })
