@@ -35,12 +35,12 @@
 
 			<ion-item no-padding>
 				<ion-label floating>{{ 'CLIENTE' | translate }}</ion-label>
-				<ion-input type="text" value=""></ion-input>
+				<ion-input type="text" value="" [(ngModel)]="cliente"></ion-input>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label floating>{{ 'CAMPANIA' | translate }}</ion-label>
-				<ion-input type="text" value=""></ion-input>
+				<ion-input type="text" value="" [(ngModel)]="campania"></ion-input>
 			</ion-item>
 
 		</ion-list>
@@ -51,32 +51,32 @@
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TV' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="medios('TV')" [checked]="tv"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'RADIO' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="medios('Radio')" [checked]="radio"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'CINE' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="medios('Cine')" [checked]="cine"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'INTERNET' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="medios('Internet')" [checked]="internet"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TODOS_LOS_MEDIOS' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="medios('Todos los medios')" [checked]="todos"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'OTROS' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="medios('Otros')" [checked]="otros"></ion-toggle>
 			</ion-item>
 
 		</ion-list>
@@ -87,22 +87,22 @@
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TRES_MESES' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="licencias('Tres meses')" [checked]="tres"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'SEIS_MESES' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="licencias('Seis meses')" [checked]="seis"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'DOCE_MESES' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="licencias('Doce meses')" [checked]="doce"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'OTROS' | translate }}</ion-label>
-				<ion-toggle ></ion-toggle>
+				<ion-toggle (click)="licencias('Otros')" [checked]="otrosLicencia"></ion-toggle>
 			</ion-item>
 
 		</ion-list>
@@ -113,12 +113,12 @@
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TODO_EL_MUNDO' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Todo el mundo')" [checked]="todoMundo"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label><strong>{{ 'LATINOAMERICA' | translate }}</strong></ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('LatinoAmerica')" [checked]="latinoAmerica"></ion-toggle>
 			</ion-item>
 
 		</ion-list>
@@ -128,42 +128,42 @@
 			
 			<ion-item no-padding>
 				<ion-label>Argentina</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Argentina')" [checked]="argentina"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Bolivia</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Bolivia')" [checked]="bolivia"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Brasil</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Brasil')" [checked]="brasil"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Chile</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Chile')" [checked]="chile"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Ecuador</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Ecuador')" [checked]="ecuador"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Paraguay</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Paraguay')" [checked]="paraguay"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Peru</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Peru')" [checked]="peru"></ion-checkbox>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>Uruguay</ion-label>
-				<ion-checkbox></ion-checkbox>
+				<ion-checkbox (click)="territorio('Uruguay')" [checked]="uruguay"></ion-checkbox>
 			</ion-item>
 
 		</ion-list>	
@@ -173,62 +173,62 @@
 
 			<ion-item no-padding>
 				<ion-label>{{ 'CENTRO_AMERICA_Y_CARIBE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Centro America y el Caribe')" [checked]="centroAmerica"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'AMERICA_DEL_NORTE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('America del Norte')" [checked]="americaNorte"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TODA_EUROPA' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Toda Europa')" [checked]="europa"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'EUROPA_DEL_ESTE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Europa del este')" [checked]="europaEste"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'EUROPA_DEL_NORTE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Europa del Norte')" [checked]="europaNorte"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'EUROPA_DEL_OESTE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Europa del Oeste')" [checked]="europaOeste"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'ASIA' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Asia')" [checked]="asia"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'MEDIO_ORIENTE_PENINSULA_ARABIGA' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Medio Oriente Peninsula Arabiga')" [checked]="oriente"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'OCEANIA' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Oceania')" [checked]="oceania"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'TODO_AFRICA' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Todo Africa')" [checked]="africa"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'AFRICA_DEL_SUR' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Africa del Sur')" [checked]="africaSur"></ion-toggle>
 			</ion-item>
 
 			<ion-item no-padding>
 				<ion-label>{{ 'AFRICA_DEL_NORTE' | translate }}</ion-label>
-				<ion-toggle></ion-toggle>
+				<ion-toggle (click)="territorio('Africa del Norte')" [checked]="africaNorte"></ion-toggle>
 			</ion-item>
 
 		</ion-list>
@@ -240,17 +240,17 @@
 
 			<ion-item no-padding>
 				<ion-label>{{ 'SELECCIONE_LA_CANTIDAD' | translate }}</ion-label>
-				<ion-select interface="popover">
-					<ion-option value="nes">1</ion-option>
-					<ion-option value="n64">2</ion-option>
-					<ion-option value="ps">3</ion-option>
-					<ion-option value="genesis">4</ion-option>
+				<ion-select [(ngModel)]="cantidad" interface="popover">
+					<ion-option value="1">1</ion-option>
+					<ion-option value="2">2</ion-option>
+					<ion-option value="3">3</ion-option>
+					<ion-option value="4">4</ion-option>
 				</ion-select>
 			</ion-item>
 
 		</ion-list>
 
-		<button ion-button block class='default-button'>{{ 'ENVIAR_A_COTIZAR' | translate }}</button>
+		<button ion-button block class='default-button' (click)="save()">{{ 'ENVIAR_A_COTIZAR' | translate }}</button>
 
 	</div>
 </ion-content>

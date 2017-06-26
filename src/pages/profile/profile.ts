@@ -52,7 +52,10 @@ export class Profile {
 			email = email.toLowerCase();
 			console.log(email)
 			this.firebaseProvider.getProfile(email).subscribe(profile =>{
-				console.log(profile);				  				
+				console.log(profile);	
+				this.storage.set('email', profile[0].email);			  				
+				this.storage.set('nombre', profile[0].nombre);			  				
+				this.storage.set('empresa', profile[0].empresa);			  				
 				this.apellido = profile[0].apellido;
 				this.email = profile[0].email;
 				this.empresa = profile[0].empresa;
@@ -112,8 +115,7 @@ export class Profile {
 	}
 
 	removeItemFromArr ( arr, item ) {
- 	   var i = arr.indexOf( item );
-		console.log(i);
+ 	   var i = arr.indexOf( item );		
     	arr.splice( i, 1 );
 	}
 
@@ -121,13 +123,10 @@ export class Profile {
 		if(pro=="AV producciones"){
 			if(!this.av){
 				this.producciones.push(pro);				
-				this.av = true;
-				console.log(this.av)	
-			}else{				
-				
+				this.av = true;				
+			}else{								
 				this.removeItemFromArr( this.producciones, pro );	
-				this.av = false;
-				console.log(this.av)
+				this.av = false;				
 			}
 		}
 		if(pro=="TV producciones"){

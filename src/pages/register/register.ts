@@ -24,7 +24,7 @@ import {FirebaseProvider} from '../../app/firebase.provider';
 export class Register {	
 	selectPlan =  SelectPlan;
 	login =  Login;	
-  email: string;
+  email: string = "";
   pass: string;
   name:string;
   company:string;  

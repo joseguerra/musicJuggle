@@ -1,14 +1,14 @@
 webpackJsonp([18],{
 
-/***/ 1028:
+/***/ 1030:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__glosary__ = __webpack_require__(234);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlosaryModule", function() { return GlosaryModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__history_detail__ = __webpack_require__(236);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HistoryDetailModule", function() { return HistoryDetailModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,26 +18,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var GlosaryModule = (function () {
-    function GlosaryModule() {
+var HistoryDetailModule = (function () {
+    function HistoryDetailModule() {
     }
-    return GlosaryModule;
+    return HistoryDetailModule;
 }());
-GlosaryModule = __decorate([
+HistoryDetailModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__glosary__["a" /* Glosary */],
+            __WEBPACK_IMPORTED_MODULE_2__history_detail__["a" /* HistoryDetail */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__glosary__["a" /* Glosary */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__history_detail__["a" /* HistoryDetail */]),
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_2__glosary__["a" /* Glosary */]
+            __WEBPACK_IMPORTED_MODULE_2__history_detail__["a" /* HistoryDetail */]
         ]
     })
-], GlosaryModule);
+], HistoryDetailModule);
 
-//# sourceMappingURL=glosary.module.js.map
+//# sourceMappingURL=history-detail.module.js.map
 
 /***/ })
 

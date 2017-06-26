@@ -75,4 +75,21 @@ export class FirebaseProvider {
         return data;
       })
   }
+
+    setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad){
+      const itemObservable = this.af.database.list('/cotizaciones');
+      itemObservable.push({ 
+        email: email,
+        nombre: nombre,
+        empresa: empresa,        
+        cliente: cliente,
+        campania: campania,
+        medio: medio,
+        licencia: licencia,
+        territorios: territorios,
+        cantidad: cantidad,        
+      })
+  }
+
+
 }
