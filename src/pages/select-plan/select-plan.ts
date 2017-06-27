@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {Profile} from '../profile/profile';
 /**
  * Generated class for the SelectPlan page.
  *
@@ -13,12 +13,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'select-plan.html',
 })
 export class SelectPlan {
-
+  profile =  Profile;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectPlan');
+  }
+
+  openModal(plan){
+    this.navCtrl.push(this.profile, {'plan':plan});
   }
 
 }

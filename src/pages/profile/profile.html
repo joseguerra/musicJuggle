@@ -24,18 +24,18 @@
 
 
 	<ion-list>
-		<button ion-item no-padding  (click)="onSelectPlan(0)" detail-push>
-			Free Plan
-		</button>  
-
+		<ion-item no-padding (click)="onSelectPlan(0)" detail-push>
+			<ion-label floating>{{ 'PLAN' | translate }}</ion-label>
+			<ion-input type="text" disabled value="" [(ngModel)]="plan"></ion-input>
+		</ion-item>
 		<ion-item no-padding>
 			<ion-label floating>{{ 'NOMBRE' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="name"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="nombre"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'APELLIDO' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="fullName"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="apellido"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
@@ -45,27 +45,27 @@
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'TELEFONO' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="phone"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="telefono"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'PAIS' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="country"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="pais"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'COMPANIA' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="company"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="empresa"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'PUESTO_DE_TRABAJO' | translate }}</ion-label>
-			<ion-input type="text" value="" [(ngModel)]="work"></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="puesto"></ion-input>
 		</ion-item>
 
 		<ion-item no-padding style="margin-top: 10px;">
 			<ion-label floating>{{ 'USO_MUSIC_JUGGLE_PARA' | translate }}</ion-label>
-			<ion-select [(ngModel)]="gaming" interface="popover">
+			<ion-select [(ngModel)]="uso" interface="popover">
 				<ion-option value="nes">Opción 1</ion-option>
 				<ion-option value="n64">Opción 2</ion-option>
 				<ion-option value="ps">Opción 3</ion-option>
@@ -75,7 +75,7 @@
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'CANTIDAD_DE_PRODUCCIONES_POR_ANO' | translate }}</ion-label>
-			<ion-input type="number" value=""></ion-input>
+			<ion-input type="number" value="" [(ngModel)]="reproducciones"></ion-input>
 		</ion-item>
 	
 	</ion-list>
@@ -86,27 +86,27 @@
 
 		<ion-item no-padding>
 			<ion-label>{{ 'AV_PRODUCCIONES' | translate }}</ion-label>
-			<ion-toggle></ion-toggle>
+			<ion-toggle (click)="cambio('AV producciones')" [checked]="av"></ion-toggle>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label>{{ 'TV_PRODUCCIONES' | translate }}</ion-label>
-			<ion-toggle></ion-toggle>
+			<ion-toggle (click)="cambio('TV producciones')" [checked]="tv"></ion-toggle>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label>{{ 'FILMS' | translate }}</ion-label>
-			<ion-toggle ></ion-toggle>
+			<ion-toggle (click)="cambio('Films')" [checked]="films"></ion-toggle>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label>{{ 'RADIO' | translate }}</ion-label>
-			<ion-toggle ></ion-toggle>
+			<ion-toggle (click)="cambio('Radio')" [checked]="radio"></ion-toggle>
 		</ion-item>
 
 		<ion-item no-padding>
 			<ion-label floating>{{ 'OTRA' | translate }}</ion-label>
-			<ion-input type="text" value=""></ion-input>
+			<ion-input type="text" value="" [(ngModel)]="otros"></ion-input>
 		</ion-item>
 	</ion-list>
 

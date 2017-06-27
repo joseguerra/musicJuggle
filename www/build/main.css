@@ -27640,6 +27640,14 @@ page-profile h5 {
   margin: 30px 0px 15px 0px !important;
 }
 
+page-quotation .lista {
+  margin-bottom: 0px !important;
+}
+
+page-quotation .lista, page-quotation .lista > ion-item {
+  background: #f9f9f9 !important;
+}
+
 page-register .mj-logo {
   height: 3vh;
   margin-bottom: 3vh;
