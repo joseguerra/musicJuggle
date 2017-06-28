@@ -45,7 +45,7 @@ export class Register {
     console.log('ionViewDidLoad Register');
   }
 
-    showAlert(message,title) {
+  showAlert(message,title) {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,

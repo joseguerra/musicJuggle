@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController,AlertController } from 'ionic-angular';
 import {FirebaseProvider} from '../../app/firebase.provider';
 import { Listen } from '../listen/listen';
 /**
@@ -66,6 +66,7 @@ export class Quotation {
               public navParams: NavParams,
               public storage: Storage,
               public firebaseProvider:FirebaseProvider,
+							public alertCtrl: AlertController,  
               public loadingCtrl: LoadingController) {
     storage.get('email').then((email) => {	
       this.email= email; 
@@ -77,6 +78,15 @@ export class Quotation {
       this.empresa = empresa;
     })
   }
+
+	showAlert(message,title) {
+		let alert = this.alertCtrl.create({
+		title: title,
+		subTitle: message,
+		buttons: ['OK']
+		});
+		alert.present();
+	}
 
   save(){
 		console.log(this.medio);
@@ -99,6 +109,7 @@ export class Quotation {
 		)
 
 		loader.dismiss();
+		this.showAlert("Sus datos se enviaron con exito","Perfecto");
     this.navCtrl.setRoot(this.listen);
 	}
 

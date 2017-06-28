@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  AngularFire, FirebaseListObservable } from 'angularfire2';
+import firebase from 'firebase';
+import {LoadingController,AlertController } from 'ionic-angular';
 /*
   Generated class for the Clinic provider.
 
@@ -8,10 +10,20 @@ import {  AngularFire, FirebaseListObservable } from 'angularfire2';
 */
 @Injectable()
 export class FirebaseProvider {
+  fireStorage = firebase.storage()
   song: FirebaseListObservable<any[]>;
   profile: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire ) {    
+  constructor(private af: AngularFire,public alertCtrl: AlertController,public loadingCtrl: LoadingController,  ) {    
+  }
+
+  showAlert(message,title) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
   
   getTopTen(){
@@ -76,6 +88,8 @@ export class FirebaseProvider {
       })
   }
 
+  
+
     setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad){
       const itemObservable = this.af.database.list('/cotizaciones');
       itemObservable.push({ 
@@ -90,6 +104,26 @@ export class FirebaseProvider {
         cantidad: cantidad,        
       })
   }
+
+  saveSong(song){
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    var songStorage = this.fireStorage.ref().child('audio.aac');
+
+    songStorage.put(song).then((res)=>{
+      loader.dismiss();
+      this.showAlert("Su cancion ha sido enviada","Perfecto");
+      console.log("todo fino");
+    }).catch((err)=>{
+      loader.dismiss();
+      this.showAlert("Su cancion no ha sido enviada","Error");
+      console.log(err);
+    })    
+  }
+
+
 
 
 }

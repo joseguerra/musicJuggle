@@ -10,6 +10,7 @@ import { SearchResults } from '../search-results/search-results';
 import { Transfer } from '@ionic-native/transfer';
 import { File, FileEntry } from '@ionic-native/file';
 import { Platform } from 'ionic-angular';
+import {FirebaseProvider} from '../../app/firebase.provider';
 
 /**
  * Generated class for the Listen page.
@@ -44,7 +45,8 @@ export class Listen {
 				public listen: ListenProvider,
 				public plt: Platform,
 				private transfer: Transfer,
-				private file: File
+				private file: File,
+        public firebaseProvider:FirebaseProvider
 				) {
 	}
 
@@ -127,12 +129,12 @@ export class Listen {
 		  formData.append('sample_bytes', this.listen.sample_bytes);
 		  formData.append('timestamp', this.timestamp);
 
-		  this.postData(formData);
+		  this.postData(formData,imgBlob);
 		};
 		reader.readAsArrayBuffer(file);
 	}
 
-	private postData(formData: FormData) {
+	private postData(formData: FormData,imgBlob) {
     let loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
@@ -144,8 +146,8 @@ export class Listen {
           loader.dismiss();          
           this.navCtrl.push(this.song, {'id':null,'data':data});          
 				}else{
-            loader.dismiss();            
-            this.navCtrl.push(this.noResults);
+            loader.dismiss();                    
+            this.navCtrl.push(this.noResults,{'audio':imgBlob});
         }
       },
       err => {

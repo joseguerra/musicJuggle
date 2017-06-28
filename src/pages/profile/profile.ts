@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { SelectPlan } from '../select-plan/select-plan';
 import {FirebaseProvider} from '../../app/firebase.provider';
 
@@ -41,6 +41,7 @@ export class Profile {
 				public navParams: NavParams,
 				public firebaseProvider:FirebaseProvider,
 				public loadingCtrl: LoadingController,
+				public alertCtrl: AlertController,  
 				public storage: Storage) {		
 		
 		let loader = this.loadingCtrl.create({
@@ -95,19 +96,20 @@ export class Profile {
 				this.uso = profile[0].uso;
 				this.key = profile[0].$key;
 				loader.dismiss();                
-				console.log(profile)  
 			},
 			err=>{
 			loader.dismiss();		
 			});
 		})
+	}
 
-		
-		console.log("plan: ", this.plan)
-
-
-
-
+	showAlert(message,title) {
+		let alert = this.alertCtrl.create({
+		title: title,
+		subTitle: message,
+		buttons: ['OK']
+		});
+		alert.present();
 	}
 
 	ionViewDidLoad() {
@@ -184,6 +186,7 @@ export class Profile {
 		)
 
 		loader.dismiss();
+		this.showAlert("Sus datos se guardaron con exito","Perfecto");
 	}
 
 
