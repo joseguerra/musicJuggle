@@ -90,7 +90,7 @@ export class FirebaseProvider {
 
   
 
-    setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad){
+  setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad){
       const itemObservable = this.af.database.list('/cotizaciones');
       itemObservable.push({ 
         email: email,
@@ -110,7 +110,9 @@ export class FirebaseProvider {
       content: "Please wait..."
     });
     loader.present();
-    var songStorage = this.fireStorage.ref().child('audio.aac');
+    var f = new Date();
+
+    var songStorage = this.fireStorage.ref().child('new_'+f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()+ "/" + f.getHours()+ "/" + f.getMinutes()+ "/" + f.getSeconds());
 
     songStorage.put(song).then((res)=>{
       loader.dismiss();

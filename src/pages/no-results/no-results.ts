@@ -31,6 +31,8 @@ export class NoResults {
   }
 
   enviarAudio(){
+    
+
     this.firebaseProvider.saveSong(this.navParams.get('audio'));
   }
 
