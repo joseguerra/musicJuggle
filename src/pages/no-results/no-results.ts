@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import {Listen} from '../listen/listen';
 import { SearchResults } from '../search-results/search-results';
 import {FirebaseProvider} from '../../app/firebase.provider';
@@ -19,11 +19,18 @@ export class NoResults {
   searchResults = SearchResults; 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController, 
               public firebaseProvider:FirebaseProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NoResults');
+  showAlert(message,title) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['LISTO']
+    });
+    alert.present();
   }
 
   openListen(){
@@ -31,9 +38,15 @@ export class NoResults {
   }
 
   enviarAudio(){
-    
+    let loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+
+    loader.present();
 
     this.firebaseProvider.saveSong(this.navParams.get('audio'));
+    loader.dismiss();
+    this.showAlert("En las próximas horas vamos a estar contactandote.","Buenisimo!");
   }
 
 

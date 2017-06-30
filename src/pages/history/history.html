@@ -17,24 +17,14 @@
 
 
 	<ion-list>
-		<ion-item no-padding (click)="onclick(item)">
+		<ion-item *ngFor="let history of histories" no-padding (click)="onclick(history)">
 			<ion-thumbnail item-left>
-				<img src="http://images.rewardstyle.com/img?v=2.13&p=n_48620772">
+				<img [src]="history.imagen">
 			</ion-thumbnail>
-			<h2>My Neighbor Totoro</h2>
-			<p>Hayao Miyazaki • 1988</p>
+			<h2>{{history.cancion}}</h2>
+			<p>{{history.artista}} • {{history.album}}</p>
 			<p text-right class="text-rojo uppercase">{{ 'COTIZADO' | translate }}</p>
 		</ion-item>
-
-		<ion-item no-padding (click)="onclick(item)">
-			<ion-thumbnail item-left>
-				<img src="http://images.rewardstyle.com/img?v=2.13&p=n_48620772">
-			</ion-thumbnail>
-			<h2>My Neighbor Totoro</h2>
-			<p>Hayao Miyazaki • 1988</p>
-			<p text-right class="text-rojo uppercase">Cotizado</p>
-		</ion-item>
-
 
 
 	</ion-list>

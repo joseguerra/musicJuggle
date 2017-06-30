@@ -220,6 +220,6 @@ export class Song {
 	}
 
 	goToQuotation(){
-		this.navCtrl.setRoot(this.quotation);
+		this.navCtrl.setRoot(this.quotation,{'song':this.song});
 	}
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {  AngularFire, FirebaseListObservable } from 'angularfire2';
 import firebase from 'firebase';
+import { Storage } from '@ionic/storage';
 import {LoadingController,AlertController } from 'ionic-angular';
 /*
   Generated class for the Clinic provider.
@@ -13,8 +14,11 @@ export class FirebaseProvider {
   fireStorage = firebase.storage()
   song: FirebaseListObservable<any[]>;
   profile: FirebaseListObservable<any[]>;
-
-  constructor(private af: AngularFire,public alertCtrl: AlertController,public loadingCtrl: LoadingController,  ) {    
+  cotizaciones: FirebaseListObservable<any[]>;
+  constructor(private af: AngularFire,
+              public alertCtrl: AlertController,
+              public loadingCtrl: LoadingController,
+              public storage: Storage  ) {    
   }
 
   showAlert(message,title) {
@@ -90,7 +94,7 @@ export class FirebaseProvider {
 
   
 
-  setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad){
+  setCotizacion(email,nombre,empresa,cliente,campania,medio,licencia,territorios,cantidad,imagen,cancion,artista,album){
       const itemObservable = this.af.database.list('/cotizaciones');
       itemObservable.push({ 
         email: email,
@@ -101,7 +105,20 @@ export class FirebaseProvider {
         medio: medio,
         licencia: licencia,
         territorios: territorios,
-        cantidad: cantidad,        
+        cantidad: cantidad,
+        imagen: imagen, 
+        cancion:cancion, 
+        artista: artista,
+        album:album      
+      })
+  }
+
+  setUnrecognizables(date,nombre,file){
+      const itemObservable = this.af.database.list('/unrecognizables');
+      itemObservable.push({ 
+        date: date,
+        nombre: nombre,
+        file: file,              
       })
   }
 
@@ -115,6 +132,11 @@ export class FirebaseProvider {
     var songStorage = this.fireStorage.ref().child('new_'+f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()+ "/" + f.getHours()+ "/" + f.getMinutes()+ "/" + f.getSeconds());
 
     songStorage.put(song).then((res)=>{
+
+      this.storage.get('nombre').then((nombre) => {
+        this.setUnrecognizables(f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear(),nombre,'new_'+f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()+ "/" + f.getHours()+ "/" + f.getMinutes()+ "/" + f.getSeconds())
+      })
+
       loader.dismiss();
       this.showAlert("Su cancion ha sido enviada","Perfecto");
       console.log("todo fino");
@@ -123,6 +145,12 @@ export class FirebaseProvider {
       this.showAlert("Su cancion no ha sido enviada","Error");
       console.log(err);
     })    
+  }
+
+  getCotizaciones(){ 
+    
+      this.cotizaciones = this.af.database.list('/cotizaciones') as FirebaseListObservable<any[]>;      
+      return this.cotizaciones;  
   }
 
 

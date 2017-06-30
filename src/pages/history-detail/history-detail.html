@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
-    <ion-title>Lucha de Gigantes</ion-title>
+    <ion-title>{{history.cancion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,8 +16,8 @@
 <ion-content padding>
 
 	<div class="d1" padding-left>
-		<p class="title-3">Lucha de Gigantes</p>
-		<p>Love or Lesbian</p>
+		<p class="title-3">{{history.cancion}}</p>
+		<p>{{history.artista}}</p>
 	</div>
 
 	<button ion-button class='default-button' block>Hacer un comentario</button>
@@ -25,12 +25,30 @@
 	<p>Obra: </p>
 	<p>Autores: </p>
 	<p>Interprete: </p>
-	<p>Cliente: </p>
-	<p>Campaña: </p>
-	<p>Medios: </p>
+	<p>Cliente: {{history.cliente}} </p>
+	<p>Campaña: {{history.campania}}</p>
+	<p>Medios:
+			<ion-list no-lines>
+				<ion-item *ngFor="let med of history.medio">
+					{{med}}
+				</ion-item>
+			</ion-list>
+		 </p>
 	<p>Cantidad de comerciales/spots: </p>
-	<p>Duración de licencia: </p>
-	<p>Territorio: </p>
+	<p>Duración de licencia:
+		<ion-list no-lines>
+			<ion-item *ngFor="let lic of history.licencia">
+				{{lic}}
+			</ion-item>
+		</ion-list>
+	</p>
+	<p>Territorio:
+		<ion-list no-lines>
+			<ion-item *ngFor="let te of history.territorios">
+				{{te}}
+			</ion-item>
+		</ion-list>
+	</p>
 
 	<p><strong>ESTIMADO DERECHOS EDITORIALES, FONOGRÁFICOS Y GESTIÓN</strong></p>
 

@@ -29,6 +29,7 @@ export class Register {
   name:string;
   company:string;  
   tabs = TabsPage;
+  tabBarElement:any = document.querySelector('.tabbar.show-tabbar');
   constructor(public navCtrl: NavController,
 							public navParams: NavParams,
               public alertCtrl: AlertController,  
@@ -40,6 +41,11 @@ export class Register {
               public firebaseProvider:FirebaseProvider,              
               ) {  	
   }
+
+  ionViewWillEnter(){
+    this.tabBarElement.style.display = 'none';
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Register');

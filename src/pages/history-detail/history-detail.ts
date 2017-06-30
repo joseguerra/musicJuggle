@@ -14,11 +14,14 @@ import { ModalOutBudget } from '../modal-out-budget/modal-out-budget';
   templateUrl: 'history-detail.html',
 })
 export class HistoryDetail {
-
+  history: any;
 	modalOutBudget =  ModalOutBudget;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  
+    console.log(navParams.get('history'));
+    this.history = navParams.get('history');
   }
 
   ionViewDidLoad() {

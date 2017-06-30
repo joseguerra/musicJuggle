@@ -109,8 +109,9 @@ export function createTranslateLoader(http: Http) {
       modalEnter: 'modal-slide-in',
       modalLeave: 'modal-slide-out',
       //tabsPlacement: 'bottom',
+      tabsHideOnSubPages: true,
       pageTransition: 'ios'
-      }
+    }    
     ),
 
     TranslateModule.forRoot({

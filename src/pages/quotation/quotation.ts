@@ -21,6 +21,7 @@ export class Quotation {
   empresa: string;
   cliente: string = "";
   campania: string = "";
+	song: any;
 
   medio: any = [];
   tv: boolean = false;
@@ -68,6 +69,9 @@ export class Quotation {
               public firebaseProvider:FirebaseProvider,
 							public alertCtrl: AlertController,  
               public loadingCtrl: LoadingController) {
+
+		this.song = navParams.get('song');
+		console.log(this.song)
     storage.get('email').then((email) => {	
       this.email= email; 
     })
@@ -105,7 +109,11 @@ export class Quotation {
       this.medio,
       this.licencia,
       this.territorios,
-      this.cantidad
+      this.cantidad,
+			this.song.album.images[0].url,
+			this.song.name,
+			this.song.artists[0].name,
+			this.song.album.name
 		)
 
 		loader.dismiss();
