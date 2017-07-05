@@ -35,11 +35,16 @@ import { WorkWithUs } from '../pages/work-with-us/work-with-us';
 import { Terms } from '../pages/terms/terms';
 import { Quotation } from '../pages/quotation/quotation';
 import { Recomendations } from '../pages/recomendations/recomendations';
+import {Question} from '../pages/question/question';
+import {Comentary} from '../pages/comentary/comentary';
 import { ModalOutBudget } from '../pages/modal-out-budget/modal-out-budget';
+import {ModalComentary} from '../pages/modal-comentary/modal-comentary';
+import {ModalQuestion} from '../pages/modal-question/modal-question';
 import { Login } from '../pages/login/login';
 import { Song } from '../pages/song/song';
 import { SearchResults } from '../pages/search-results/search-results';
 import { NoResults } from '../pages/no-results/no-results';
+import {WaitingForQuote} from '../pages/waiting-for-quote/waiting-for-quote';
 import { ListenProvider } from '../pages/listen/listen.provider';
 import { FirebaseProvider } from '../app/firebase.provider';
 import { MusixmatchProvider } from '../app/musixmatch.provider';
@@ -88,9 +93,14 @@ export function createTranslateLoader(http: Http) {
     Quotation,
     Recomendations,
     ModalOutBudget,
+    ModalComentary,
+    ModalQuestion,
     Register,
     Login,
     Song,
+    WaitingForQuote,
+    Question,
+    Comentary,
     SearchResults,
     NoResults,
     TruncatePipe
@@ -142,9 +152,14 @@ export function createTranslateLoader(http: Http) {
     Terms,
     Recomendations,
     ModalOutBudget,
+    ModalComentary,
+    ModalQuestion,
     Register,
     Login,
     Song,
+    WaitingForQuote,
+    Question,
+    Comentary,
     SearchResults,
     NoResults,
     Quotation

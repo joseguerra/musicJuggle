@@ -3,6 +3,7 @@ import {  AngularFire, FirebaseListObservable } from 'angularfire2';
 import firebase from 'firebase';
 import { Storage } from '@ionic/storage';
 import {LoadingController,AlertController } from 'ionic-angular';
+
 /*
   Generated class for the Clinic provider.
 
@@ -147,9 +148,49 @@ export class FirebaseProvider {
     })    
   }
 
-  getCotizaciones(){ 
-    
-      this.cotizaciones = this.af.database.list('/cotizaciones') as FirebaseListObservable<any[]>;      
+  getCotizaciones(email){     
+      this.cotizaciones = this.af.database.list('/cotizaciones',{
+        query: {
+          orderByChild: 'email',
+          equalTo: email        
+        }
+      }) as FirebaseListObservable<any[]>;      
+      return this.cotizaciones;  
+  }
+
+  setComentary(email,comentario){
+      const itemObservable = this.af.database.list('/comentarios');
+      itemObservable.push({ 
+        email: email,
+        comentario: comentario        
+      })
+  }
+
+  setQuestion(email,pregunta){
+      const itemObservable = this.af.database.list('/preguntas');
+      itemObservable.push({ 
+        email: email,
+        pregunta: pregunta        
+      })
+  }
+
+  getComentary(email){     
+      this.cotizaciones = this.af.database.list('/comentarios',{
+        query: {
+          orderByChild: 'email',
+          equalTo: email        
+        }
+      }) as FirebaseListObservable<any[]>;      
+      return this.cotizaciones;  
+  }
+
+  getQuestion(email){     
+      this.cotizaciones = this.af.database.list('/preguntas',{
+        query: {
+          orderByChild: 'email',
+          equalTo: email        
+        }
+      }) as FirebaseListObservable<any[]>;      
       return this.cotizaciones;  
   }
 

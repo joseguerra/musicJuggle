@@ -24,17 +24,26 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+       this.storage.get('email').then((email) => {
+         console.log(email)
+        if(email){
+          this.rootPage = TabsPage;
+        }
+        else{
+          this.storage.get('introShown').then((result) => {
+            if(result){
+              this.rootPage = Login;
+            } else {
+              this.rootPage = 'Intro';
+              this.storage.set('introShown', true);
+            }
 
-      this.storage.get('introShown').then((result) => {
-
-        if(result){
-          this.rootPage = Login;
-        } else {
-          this.rootPage = 'Intro';
-          this.storage.set('introShown', true);
+          });
         }
 
-      });
+       })
+
+
 
       statusBar.styleDefault();
       setTimeout(() => {

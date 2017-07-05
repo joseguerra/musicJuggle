@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>modalOutBudget</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+
+		<ion-item>			
+			<ion-textarea type="text" value=""[(ngModel)]="comentario" placeholder="Escriba una Pregunta en esta area" ></ion-textarea>
+		</ion-item>
+	<button ion-button class='default-button' block (click)="dismiss()">{{ 'COMMENT' | translate }}</button>
+
+
+</ion-content>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ModalOutBudget } from '../modal-out-budget/modal-out-budget';
 import {Comentary} from '../comentary/comentary';
 /**
  * Generated class for the HistoryDetail page.
@@ -10,12 +9,11 @@ import {Comentary} from '../comentary/comentary';
  */
 @IonicPage()
 @Component({
-  selector: 'page-history-detail',
-  templateUrl: 'history-detail.html',
+  selector: 'page-waiting-for-quote',
+  templateUrl: 'waiting-for-quote.html',
 })
-export class HistoryDetail {
+export class WaitingForQuote {
   history: any;
-	modalOutBudget =  ModalOutBudget;
   comentary = Comentary;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
@@ -28,16 +26,11 @@ export class HistoryDetail {
     console.log('ionViewDidLoad HistoryDetail');
   }
 
-
-  openOutBudget() {
-
-    let modal = this.modalCtrl.create(this.modalOutBudget);
-    modal.present();
-  }
-
   goComentary(){
 		console.log("entre");
 		this.navCtrl.setRoot(this.comentary,{'song':this.history});
 	}
+
+
 
 }

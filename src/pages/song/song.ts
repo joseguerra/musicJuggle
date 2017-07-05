@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MusixmatchProvider } from '../../app/musixmatch.provider';
 
 import { Quotation } from '../quotation/quotation'; 
+import {Question} from '../question/question';
 
 /**
  * Generated class for the Song page.
@@ -51,6 +52,7 @@ export class Song {
 	};
 
 	quotation = Quotation;
+	question = Question;
 	
   constructor(public navCtrl: NavController,
 							public navParams: NavParams,
@@ -182,6 +184,11 @@ export class Song {
 
 	goBack(){
 		this.navCtrl.pop();
+	}
+
+	goQuestion(){
+		console.log("entre");
+		this.navCtrl.setRoot(this.question,{'song':this.song});
 	}
 
 	launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string, track:string) {

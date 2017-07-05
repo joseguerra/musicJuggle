@@ -20,7 +20,7 @@
 		<p>{{history.artista}}</p>
 	</div>
 
-	<button ion-button class='default-button' block>Hacer un comentario</button>
+	<button ion-button class='default-button' block (click)="goComentary()">{{ 'LEAVE_A_COMMENT' | translate }}</button>
 
 	<p>Obra: </p>
 	<p>Autores: </p>
@@ -53,7 +53,7 @@
 	<p><strong>ESTIMADO DERECHOS EDITORIALES, FONOGRÁFICOS Y GESTIÓN</strong></p>
 
 	<p class="text-rojo">
-		<span class="title-2">US$ xxx</span><br>
+		<span class="title-2">US$ {{history.precio}}</span><br>
 		<small class="text-rojo">MAS IVA (INCLUYE MASTER ORIGINAL)</small>
 	</p>
 

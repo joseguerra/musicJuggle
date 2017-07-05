@@ -1,0 +1,35 @@
+<!--
+  Generated template for the HistoryDetail page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color='navbarColor'>
+    <ion-title>{{song?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div class="d1" padding-left>
+		<p class="title-3">{{song?.name}}</p>
+		<p>{{song?.artists[0].name}}</p>
+	</div>
+
+	<button ion-button class='default-button' block (click)="openModal()">{{ 'LEAVE_A_COMMENT' | translate }}</button>
+	<br>
+  <div *ngFor="let pregunta of preguntas" >
+    <div class="left" *ngIf="pregunta.respuesta">    
+        <span>{{pregunta.respuesta}}</span>     
+    </div>    
+    <div class="right" *ngIf="pregunta.respuesta">    
+        <span>{{pregunta.pregunta}}</span>     
+    </div>
+  </div>
+	
+	
+</ion-content>

@@ -82,5 +82,8 @@
   "CREAR_CUENTA":"Crear mi cuenta",
   "NO_LO_ENCONTRAMOS":"No encontrada",
   "VOLVER_A_ESCUCHAR":"Volver a escuchar",
-  "ENVIAR_AUDIO":"Enviar Audio"
+  "ENVIAR_AUDIO":"Enviar Audio",
+  "WAITIN_FOR_QUOTE": "Esperando por el precio",
+  "LEAVE_A_COMMENT": "Hacer un comentario",
+  "COMMENT": "Comentar"
 }
