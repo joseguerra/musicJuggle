@@ -126,6 +126,7 @@ export class Login {
               console.log(response.email)
               this.storage.set('email', response.email);
               firebase.auth().signInWithCredential(fc).then((fs)=>{
+                this.firebaseProvider.setProfile(response.name,response.email,"")
                 this.navCtrl.setRoot(this.tabs);
               }).catch((e)=>{
                 this.showAlert("Intentelo luego ","Error de auth"); 
