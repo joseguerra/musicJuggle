@@ -50,8 +50,9 @@ export class Profile {
       	loader.present();
 
 		storage.get('email').then((email) => {			
-			email = email.toLowerCase();
 			console.log(email)
+			email = email.toLowerCase();
+			
 			this.firebaseProvider.getProfile(email).subscribe(profile =>{
 				console.log(profile);	
 				this.storage.set('email', profile[0].email);			  				

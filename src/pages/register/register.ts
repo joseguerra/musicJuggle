@@ -99,20 +99,42 @@ export class Register {
 		this.navCtrl.push(this.login);
 	}
 
-  facebookLogin(){
-    this.facebook.login(['email']).then((response)=>{
-      this.facebook.getLoginStatus().then((response) => {
-            if(response.status == "connected") {
-              this.facebook.api('/' + response.authResponse.userID + '?fields=id,name,email',[]).then((response) => {
-                this.name = response.name;
-                this.email = response.email;
-              })
-            }
+
+    facebookLogin(){
+      this.facebook.login(['email']).then((response)=>{
+        const fc = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
+        this.facebook.getLoginStatus().then((response) => {
+          if(response.status == "connected") {
+            this.facebook.api('/' + response.authResponse.userID + '?fields=id,name,email',[]).then((response) => {                        
+              this.firebaseProvider.getProfile(response.email).subscribe(profile =>{
+                console.log(profile);	
+                if(profile.length>0){
+                  console.log("ya esta creado");
+                  this.showAlert("Este usuario ya esta registrado","Error"); 
+                }
+                else{
+                  console.log(response.email)
+                  this.storage.set('email', response.email);
+                  firebase.auth().signInWithCredential(fc).then((fs)=>{
+                    this.navCtrl.setRoot(this.tabs);
+                  }).catch((e)=>{
+                    this.showAlert("Intentelo luego ","Error de auth"); 
+                    console.log("1");
+                  })
+                }       
+              },
+              err=>{
+                console.log(err);	
+              });                                
+            })
+          }
+        })      
+      }).catch((e)=>{
+        this.showAlert("Intentelo luego","Error de auth"); 
+        console.log("2")
       })
-    }).catch((e)=>{
-      console.log(e)
-    })
-  }
+    }
+
 
   googlePlusLogin()
   {
