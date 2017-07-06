@@ -7,6 +7,7 @@ import {Facebook} from '@ionic-native/facebook';
 import {AngularFireAuth,AuthProviders,AuthMethods} from 'angularfire2';
 import { GooglePlus } from '@ionic-native/google-plus';
 import firebase from 'firebase';
+import {FirebaseProvider} from '../../app/firebase.provider';
 
 /**
  * Generated class for the Login page.
@@ -28,6 +29,7 @@ export class Login {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,  
+              public firebaseProvider:FirebaseProvider,
               public loadingCtrl: LoadingController,
               private facebook: Facebook,              
               private googlePlus: GooglePlus,
@@ -85,7 +87,37 @@ export class Login {
     this.navCtrl.setRoot(this.register);
   }
 
-    facebookLogin(){
+
+  facebookLogin(){
+    this.facebook.login(['email']).then((response)=>{
+      this.facebook.getLoginStatus().then((response) => {
+        if(response.status == "connected") {
+          this.facebook.api('/' + response.authResponse.userID + '?fields=id,name,email',[]).then((response) => {                                                    
+            this.firebaseProvider.getProfile(response.email).subscribe(profile =>{
+              console.log(profile);	
+              if(profile.length>0){
+                console.log("ya esta creado");
+                this.storage.set('email', response.email);
+                this.navCtrl.setRoot(this.tabs);
+              }
+              else{
+                console.log("no esta creado");
+                this.facebookRegister();
+              }       
+			      },
+			      err=>{
+              console.log(err);	
+			      });
+          })
+        }
+      })
+    }).catch((e)=>{
+      console.log(e)
+    })
+  }
+
+
+    facebookRegister(){
     this.facebook.login(['email']).then((response)=>{
       const fc = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
       this.facebook.getLoginStatus().then((response) => {
@@ -94,6 +126,7 @@ export class Login {
               console.log(response.email)
               this.storage.set('email', response.email);
               firebase.auth().signInWithCredential(fc).then((fs)=>{
+                this.firebaseProvider.setProfile(response.name,response.email,"")
                 this.navCtrl.setRoot(this.tabs);
               }).catch((e)=>{
                 this.showAlert("Intentelo luego ","Error de auth"); 
