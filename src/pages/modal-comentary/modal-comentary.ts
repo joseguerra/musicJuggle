@@ -37,8 +37,14 @@ export class ModalComentary {
       this.firebaseProvider.setComentary(email,this.comentario)
     })
     loader.dismiss();
+    const data = 1;
     this.showAlert("Gracias te responderemos al email con el que creaste tu cuenta","Perfecto");
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss(data);
+  }
+
+  dismiss2() {
+    const data = 0;
+    this.viewCtrl.dismiss(data);
   }
 
   showAlert(message,title) {

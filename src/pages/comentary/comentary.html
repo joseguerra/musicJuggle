@@ -7,6 +7,11 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
+    <ion-buttons>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="md-arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>{{history.cancion}}</ion-title>
   </ion-navbar>
 

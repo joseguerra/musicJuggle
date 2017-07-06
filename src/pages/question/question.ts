@@ -4,6 +4,7 @@ import {FirebaseProvider} from '../../app/firebase.provider';
 import { Storage } from '@ionic/storage';
 import {ModalQuestion} from '../modal-question/modal-question';
 import {Listen} from '../listen/listen';
+import{Song} from '../song/song';
 /**
  * Generated class for the HistoryDetail page.
  *
@@ -48,9 +49,14 @@ export class Question {
     let modal = this.modalCtrl.create(ModalQuestion);
     modal.present();
         modal.onDidDismiss((data)=>{
-        this.navCtrl.push(Listen);
+          if(data)            
+            this.navCtrl.setRoot(Listen);
     }) 
 
+  }
+
+  back(){    
+    this.navCtrl.pop()
   }
 
   ionViewDidLoad() {

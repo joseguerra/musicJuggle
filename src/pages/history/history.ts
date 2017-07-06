@@ -26,6 +26,10 @@ export class History {
 				      public alertCtrl: AlertController,
               public storage: Storage,  
               public navParams: NavParams) {
+
+  }
+
+  ionViewDidLoad() {
         let loader = this.loadingCtrl.create({
         	content: 'Please wait...'			
       	})
@@ -40,10 +44,6 @@ export class History {
           loader.dismiss();		
           });
         })
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad History');
   }
 
 

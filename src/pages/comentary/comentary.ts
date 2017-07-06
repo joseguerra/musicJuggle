@@ -4,6 +4,7 @@ import {ModalComentary} from '../modal-comentary/modal-comentary';
 import {FirebaseProvider} from '../../app/firebase.provider';
 import { Storage } from '@ionic/storage';
 import {History} from '../history/history';
+import {HistoryDetail}from '../history-detail/history-detail';
 /**
  * Generated class for the HistoryDetail page.
  *
@@ -49,9 +50,14 @@ export class Comentary {
     let modal = this.modalCtrl.create(ModalComentary);
     modal.present();
         modal.onDidDismiss((data)=>{
-        this.navCtrl.push(History);
+          if(data)
+            this.navCtrl.setRoot(History);
     }) 
 
+  }
+
+  back(){    
+    this.navCtrl.setRoot(History)
   }
 
   ionViewDidLoad() {
