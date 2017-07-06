@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
-    <ion-title>{{history.cancion}}</ion-title>
+    <ion-title>{{history?.cancion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,8 +16,8 @@
 <ion-content padding>
 
 	<div class="d1" padding-left>
-		<p class="title-3">{{history.cancion}}</p>
-		<p>{{history.artista}}</p>
+		<p class="title-3">{{history?.cancion}}</p>
+		<p>{{history?.artista}}</p>
 	</div>
 
 	<button ion-button class='default-button' block (click)="goComentary()">{{ 'LEAVE_A_COMMENT' | translate }}</button>
@@ -25,26 +25,26 @@
 	<p>Obra: </p>
 	<p>Autores: </p>
 	<p>Interprete: </p>
-	<p>Cliente: {{history.cliente}} </p>
-	<p>Campaña: {{history.campania}}</p>
+	<p>Cliente: {{history?.cliente}} </p>
+	<p>Campaña: {{history?.campania}}</p>
 	<p>Medios:
 			<ion-list no-lines>
-				<ion-item *ngFor="let med of history.medio">
+				<ion-item *ngFor="let med of history?.medio">
 					{{med}}
 				</ion-item>
 			</ion-list>
 		 </p>
-	<p>Cantidad de comerciales/spots: {{history.cantidad}}</p>
+	<p>Cantidad de comerciales/spots: {{history?.cantidad}}</p>
 	<p>Duración de licencia:
 		<ion-list no-lines>
-			<ion-item *ngFor="let lic of history.licencia">
+			<ion-item *ngFor="let lic of history?.licencia">
 				{{lic}}
 			</ion-item>
 		</ion-list>
 	</p>
 	<p>Territorio:
 		<ion-list no-lines>
-			<ion-item *ngFor="let te of history.territorios">
+			<ion-item *ngFor="let te of history?.territorios">
 				{{te}}
 			</ion-item>
 		</ion-list>
@@ -53,7 +53,7 @@
 	<p><strong>ESTIMADO DERECHOS EDITORIALES, FONOGRÁFICOS Y GESTIÓN</strong></p>
 
 	<p class="text-rojo">
-		<span class="title-2">US$ {{history.precio}}</span><br>
+		<span class="title-2">US$ {{history?.precio}}</span><br>
 		<small class="text-rojo">MAS IVA (INCLUYE MASTER ORIGINAL)</small>
 	</p>
 
