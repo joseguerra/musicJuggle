@@ -5,19 +5,17 @@
         <ion-icon class="color" name="md-close"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>modalOutBudget</ion-title>
+    <ion-title>{{ 'HACER_UNA_PREGUNTA' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-
+<ion-content padding>
 
 		<ion-item>			
-			<ion-textarea type="text" value=""[(ngModel)]="comentario" placeholder="Escriba una Pregunta en esta area" ></ion-textarea>
+			<ion-textarea type="text" value=""[(ngModel)]="comentario" placeholder="Escriba su pregunta..." ></ion-textarea>
 		</ion-item>
-	<button ion-button class='default-button' block (click)="dismiss()">{{ 'COMMENT' | translate }}</button>
-
+    <button ion-button block class='default-button' (click)="dismiss()"> {{ 'COMMENT' | translate }}</button>
 
 </ion-content>

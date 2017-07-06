@@ -17,7 +17,8 @@
 
 
 	<ion-list>
-		<ion-item *ngFor="let history of histories" no-padding >
+
+		<ion-item  *ngFor="let history of histories" no-padding >
 			<ion-thumbnail item-left>
 				<img [src]="history.imagen">
 			</ion-thumbnail>
@@ -27,6 +28,9 @@
 			<p *ngIf="history?.precio" text-right class="text-rojo uppercase" (click)="onclick(history)">{{ 'COTIZADO' | translate }}</p>
 		</ion-item>
 
+		<span *ngIf="histories?.length == 0" class="notFound">
+			<h2>{{ 'NO_HAY_COTIZACIONES' | translate }}</h2>
+		</span>
 
 	</ion-list>
 

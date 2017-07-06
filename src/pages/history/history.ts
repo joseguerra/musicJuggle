@@ -37,7 +37,7 @@ export class History {
         this.storage.get('email').then((email) => {
           this.firebaseProvider.getCotizaciones(email).subscribe(cotizaciones =>{
             this.histories = cotizaciones.reverse();;
-            console.log(this.histories)
+            console.log("--" + this.histories.length);
             loader.dismiss();  
           },
           err=>{

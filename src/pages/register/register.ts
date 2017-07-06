@@ -42,9 +42,11 @@ export class Register {
               ) {  	
   }
 
+  /*
   ionViewWillEnter(){
     this.tabBarElement.style.display = 'none';
   }
+  */
 
 
   ionViewDidLoad() {

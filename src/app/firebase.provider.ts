@@ -62,7 +62,7 @@ export class FirebaseProvider {
         nombre: nombre,
         otros: "",
         pais: "",
-        plan: "",
+        plan: "Free",
         producciones:"",
         puesto: "",
         reproducciones: "",

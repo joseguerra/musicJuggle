@@ -188,7 +188,7 @@ export class Song {
 
 	goQuestion(){
 		console.log("entre");
-		this.navCtrl.setRoot(this.question,{'song':this.song});
+		this.navCtrl.push(this.question,{'song':this.song});
 	}
 
 	launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string, track:string) {

@@ -37,7 +37,7 @@ export class HistoryDetail {
 
   goComentary(){
 		console.log("entre");
-		this.navCtrl.setRoot(this.comentary,{'song':this.history});
+		this.navCtrl.push(this.comentary,{'song':this.history});
 	}
 
 }
