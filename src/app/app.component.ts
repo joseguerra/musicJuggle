@@ -15,7 +15,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 
 export class MyApp {
 
-  rootPage:any = Login;
+  rootPage:any;
   loader: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, translate: TranslateService,  public loadingCtrl: LoadingController, public storage: Storage) {
