@@ -1,7 +1,8 @@
 page-intro {
 
+
     .scroll-content{
-        padding-top:30px !important;
+        padding-top:40px !important;
     }
     
     ion-slide {
@@ -17,7 +18,7 @@ page-intro {
     .mj-logo{
     	max-height: 20vh !important;
     	/*margin-top: 200px;*/
-    	margin-top: 3vh;
+    	margin-top: 4vh;
     	margin-bottom: 5vh;
     	z-index: 100;
     	position: relative;    }
@@ -36,7 +37,7 @@ page-intro {
 
     .mj-fondo2{
 	    width: 100% !important;
-	    top: -14vh;
+	    top: -19vh;
 	    position: relative;
 	    z-index: 1;
     }
@@ -52,17 +53,18 @@ page-intro {
     .omitir{
     	position: relative;
     	z-index: 120;
-    	font-size: 1.5rem;
+    	font-size: 1.4rem;
     }
 
     .slide-zoom{
     	height: 100vh;
+        font-size: 1.6rem
     }
 
     .text-slide-2{
-    	    top: -40vh;
-    position: relative;
-    z-index: 300;
+        top: -47vh;
+        position: relative;
+        z-index: 300;
     }
 
     .text-slide-3{

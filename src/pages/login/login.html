@@ -24,7 +24,7 @@
 
 	<ion-list>
 
-		<ion-item no-padding>
+		<ion-item no-padding class="no-border-top">
 			<ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
 			<ion-input type="text" value="" [(ngModel)]="email"></ion-input>
 		</ion-item>
@@ -37,11 +37,11 @@
 
 	</ion-list>
 
-	<button ion-button block class='default-button' icon-right (click)="login()">
+	<button ion-button block class='default-button'  (click)="login()">
 		{{ 'INICIAR_SESION' | translate }}
-		<ion-icon name="arrow-forward"></ion-icon>
+		
 	</button>
 
-	<p text-center>{{ 'NO_TIENES_CUENTA' | translate }} <strong><span (click)="goToRegister()"> {{ 'REGISTRATE' | translate }}</span></strong></p>
+	<p text-center>{{ 'NO_TIENES_CUENTA' | translate }} <strong><span (click)="goToRegister()" class="underline"> {{ 'REGISTRATE' | translate }}</span></strong></p>
 
 </ion-content>

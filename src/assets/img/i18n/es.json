@@ -12,7 +12,7 @@
   "TELEFONO": "Teléfono",
   "COMPANIA": "Compañía",
   "PUESTO_DE_TRABAJO": "Puesto de Trabajo",
-  "EMAIL": "Email",
+  "EMAIL": "Dirección de email",
   "SAVE": "Guardar",
   "USO_MUSIC_JUGGLE_PARA": "Uso Mussic Juggle para...",
   "CANTIDAD_DE_PRODUCCIONES_POR_ANO": "Cantidad de producciones por año",
@@ -71,11 +71,11 @@
   "LLAMADAS_DIRECTAS_RESOLVER": "Llamadas directas resolver",
   "CONECTATE_CON_FACEBOOK": "Conectate con Facebook",
   "CONECTATE_CON_GOOGLE": "Conectate con Google",
-  "CREA_TU_CUENTA": "Crea tu cuenta",
-  "YA_TIENES_CUENTA": "Ya tienes cuenta?",
-  "INICIA_SESION": "Inicia Sesión",
+  "CREA_TU_CUENTA": "Crea tu cuenta en MusicJuggle",
+  "YA_TIENES_CUENTA": "¿Ya tienes cuenta?",
+  "INICIA_SESION": "Inicia sesión en Music Juggle",
   "INICIAR_SESION": "Iniciar Sesión",
-  "NO_TIENES_CUENTA": "No tienes cuenta?",
+  "NO_TIENES_CUENTA": "¿No tienes cuenta?",
   "EMPRESA": "Empresa",
   "CONTRASENA": "Contraseña",
   "BUSCAR_CANCIONES":"Buscar canciones",
@@ -122,7 +122,15 @@
   "CANTIDAD_GUIONES": "Cantidad guiones",
   "SELECCIONE_LA_CANTIDAD": "Seleccione la cantidad",
   "ENVIAR_A_COTIZAR": "Enviar a cotizar",
-  "TOP_TEN": "Top Ten"
-
-
+  "TOP_TEN": "Top Ten",
+  "FUERA_MI_PPTO":"Fuera de mi presupuesto",
+  "ESTIMADO_DERECHOS_EDITORIALES": "ESTIMADO DERECHOS EDITORIALES, FONOGRÁFICOS Y GESTIÓN",
+  "MAS_IVA": "MAS IVA (INCLUYE MASTER ORIGINAL)",
+  "CANTIDAD_COMERCIALES_SPOTS": "Cantidad de comerciales/spots",
+  "COMENTARIOS":"Comentarios",
+  "PREMIUM": "Premium",
+  "NO_PUDIMOS_RECONOCER_LA_CANCION":"No pudimos reconocer la canción",
+  "INTENTA_RECONOCER_NUEVAMENTE":"Intenta reconocerla con menos sonido ambiente",
+  "ENVIANOS_EL_AUDIO": "Envianos el audio grabado, y te enviaremos un email indicando que canción es.",
+  "BUSCALA_POR_EL_NOMBRE":"Buscala por el nombre usando el buscador superior"
 }

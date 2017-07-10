@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Comentary} from '../comentary/comentary';
+import { Comentary } from '../comentary/comentary';
 /**
  * Generated class for the HistoryDetail page.
  *
@@ -9,26 +9,27 @@ import {Comentary} from '../comentary/comentary';
  */
 @IonicPage()
 @Component({
-  selector: 'page-waiting-for-quote',
-  templateUrl: 'waiting-for-quote.html',
+	selector: 'page-waiting-for-quote',
+	templateUrl: 'waiting-for-quote.html',
 })
 export class WaitingForQuote {
-  history: any;
-  comentary = Comentary;
+	cotizacion: any;
+	comentary = Comentary;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
-  
-    console.log(navParams.get('history'));
-    this.history = navParams.get('history');
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryDetail');
-  }
+		console.log(navParams.get('history'));
+		this.cotizacion = navParams.get('history');
+	}
 
-  goComentary(){
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad HistoryDetail');
+	}
+
+	goComentary() {
 		console.log("entre");
-		this.navCtrl.setRoot(this.comentary,{'song':this.history});
+
+		this.navCtrl.push(this.comentary, { 'cotizacion': this.cotizacion, 'origen': 'Cotización' });
 	}
 
 

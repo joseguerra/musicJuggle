@@ -48,7 +48,11 @@ export class History {
 
 
   onclick(history){
-    this.navCtrl.push(this.historyDetail, {'history':history});
+
+    if(history.precio)
+      this.navCtrl.push(this.historyDetail, {'history':history});
+    else
+      this.navCtrl.push(this.waitingForQuote, {'history':history});
   }
 
   onclickWaiting(history){

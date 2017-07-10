@@ -22,20 +22,20 @@
 
 	<button ion-button class='default-button' block (click)="goComentary()">{{ 'LEAVE_A_COMMENT' | translate }}</button>
 
-	<p>Obra: </p>
-	<p>Autores: </p>
-	<p>Interprete: </p>
-	<p>Cliente: {{history?.cliente}} </p>
-	<p>Campaña: {{history?.campania}}</p>
-	<p>Medios:
+	<p>{{ 'OBRA' | translate }}: {{history?.obra}}</p>
+	<p>{{ 'AUTORES' | translate }}: {{history?.autores}}</p>
+	<p>{{ 'INTERPRETE' | translate }}: {{history?.interprete}}</p>
+	<p>{{ 'CLIENTE' | translate }}: {{history?.cliente}} </p>
+	<p>{{ 'CAMPANIA' | translate }}: {{history?.campania}}</p>
+	<p>{{ 'MEDIOS' | translate }}:
 			<ion-list no-lines>
 				<ion-item *ngFor="let med of history?.medio">
 					{{med}}
 				</ion-item>
 			</ion-list>
 		 </p>
-	<p>Cantidad de comerciales/spots: {{history?.cantidad}}</p>
-	<p>Duración de licencia:
+	<p>{{ 'CANTIDAD_COMERCIALES_SPOTS' | translate }}: {{history?.cantidad}}</p>
+	<p>{{ 'DURACION_DE_LA_LICENCIA' | translate }}:
 		<ion-list no-lines>
 			<ion-item *ngFor="let lic of history?.licencia">
 				{{lic}}
@@ -50,20 +50,20 @@
 		</ion-list>
 	</p>
 
-	<p><strong>ESTIMADO DERECHOS EDITORIALES, FONOGRÁFICOS Y GESTIÓN</strong></p>
+	<p><strong>{{ 'ESTIMADO_DERECHOS_EDITORIALES' | translate }}</strong></p>
 
 	<p class="text-rojo">
 		<span class="title-2">US$ {{history?.precio}}</span><br>
-		<small class="text-rojo">MAS IVA (INCLUYE MASTER ORIGINAL)</small>
+		<small class="text-rojo">{{ 'MAS_IVA' | translate }}</small>
 	</p>
 
 	<ion-grid> 
 		<ion-row>
 		    <ion-col>
-		    	<button ion-button block (click)="openShare()">Compartir</button>
+		    	<button ion-button class='default-button' block (click)="openShare()">{{ 'COMPARTIR' | translate }}</button>
 		    </ion-col>
 		    <ion-col>
-		    	<button ion-button block (click)="openOutBudget()">Fuera de mi ppto</button>
+		    	<button ion-button class='default-button' block (click)="openOutBudget()">{{ 'FUERA_MI_PPTO' | translate }}</button>
 		    </ion-col>
 		</ion-row>
 	</ion-grid>

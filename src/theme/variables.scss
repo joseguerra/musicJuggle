@@ -1,9 +1,15 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-$font-path: "../assets/img/fonts";
+$font-path: "../assets/fonts";
+
 
 @import "ionic.globals";
 
+$font-family-md-base: "Cera";
+$font-family-ios-base: "Cera";
+$font-family-wp-base: "Cera";
+
+$searchbar-ios-background-color: red;
 
 // Shared Variables
 // --------------------------------------------------
@@ -77,5 +83,5 @@ $item-wp-detail-push-show: true;
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+//@import "roboto";
+//@import "noto-sans";

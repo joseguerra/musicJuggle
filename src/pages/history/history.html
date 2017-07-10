@@ -12,20 +12,28 @@
 
 </ion-header>
 
-
 <ion-content>
-
 
 	<ion-list>
 
-		<ion-item  *ngFor="let history of histories" no-padding >
+		<ion-item  *ngFor="let history of histories" no-padding (click)="onclick(history)">
+
 			<ion-thumbnail item-left>
 				<img [src]="history.imagen">
 			</ion-thumbnail>
+			
 			<h2>{{history.cancion}}</h2>
+
 			<p>{{history.artista}} • {{history.album}}</p>
-			<p *ngIf="!history?.precio" text-right class="text-rojo uppercase" (click)="onclickWaiting(history)">{{ 'ESPERANDO' | translate }}</p>
-			<p *ngIf="history?.precio" text-right class="text-rojo uppercase" (click)="onclick(history)">{{ 'COTIZADO' | translate }}</p>
+			
+			<p *ngIf="!history?.precio" text-right class="text-rojo uppercase">
+				{{ 'ESPERANDO' | translate }}
+			</p>
+			
+			<p *ngIf="history?.precio" text-right class="text-rojo uppercase">
+				{{ 'COTIZADO' | translate }}
+			</p>
+
 		</ion-item>
 
 		<span *ngIf="histories?.length == 0" class="notFound">

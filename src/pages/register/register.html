@@ -24,7 +24,7 @@
 
 	<ion-list>
 
-		<ion-item no-padding>
+		<ion-item no-padding class="no-border-top">
 			<ion-label floating>{{ 'NOMBRE' | translate }}</ion-label>
 			<ion-input type="text" value=""[(ngModel)]="name"></ion-input>
 		</ion-item>
@@ -54,6 +54,6 @@
 
 	<button ion-button block class='default-button' (click)="register()">{{ 'CREAR_CUENTA' | translate }}</button>
 
-	<p text-center>{{ 'YA_TIENES_CUENTA' | translate }} <strong><span (click)="openLogin()"> {{ 'INICIA_SESION' | translate }}</span></strong></p>
+	<p text-center>{{ 'YA_TIENES_CUENTA' | translate }} <strong><span class="underline" (click)="openLogin()"> {{ 'INICIA_SESION' | translate }}</span></strong></p>
 
 </ion-content>

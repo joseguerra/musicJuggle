@@ -4,6 +4,15 @@ page-listen {
     background: #fafcff !important;
   }
 
+  .toolbar-background{
+    background: #f53555
+  }
+
+  .searchbar-input-container{
+   background: whitesmoke;
+    border-radius: 4px; 
+  }
+
   #crossfade {
 
       width: 100%;
@@ -11,7 +20,9 @@ page-listen {
       background: url('../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00000.png');
       background-size: contain;
       background-repeat: no-repeat;
+      background-position: center;
       position: absolute;
+          margin-top: -35px;
       /*top: 0px;*/
       left: 0px;
       color: transparent;
@@ -24,6 +35,12 @@ page-listen {
   }
 
   @keyframes animate-particle {
+
+1% {
+      background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00000.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
 
     3.33333% {
       background-image: url("../assets/img/custom/animacion/MusicJuggle-logo-fill@3x_00001.png");

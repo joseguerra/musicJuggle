@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { SelectPlan } from '../select-plan/select-plan';
-import {FirebaseProvider} from '../../app/firebase.provider';
+import { FirebaseProvider } from '../../app/firebase.provider';
 
 /**
  * Generated class for the Profile page.
@@ -23,7 +23,6 @@ export class Profile {
 	tv: boolean = false;
 	films: boolean = false;
 	radio: boolean = false;
-
 	apellido: string;
 	email:string;
 	empresa: string;	
@@ -37,6 +36,7 @@ export class Profile {
 	telefono: string;
 	uso: string;				
 	key: string;
+
 	constructor(public navCtrl: NavController, 
 				public navParams: NavParams,
 				public firebaseProvider:FirebaseProvider,
@@ -46,30 +46,38 @@ export class Profile {
 		
 		let loader = this.loadingCtrl.create({
         	content: 'Please wait...'			
-      	})
+      	});
+
       	loader.present();
 
 		storage.get('email').then((email) => {			
+			
 			console.log(email)
+			
 			email = email.toLowerCase();
 			
 			this.firebaseProvider.getProfile(email).subscribe(profile =>{
+				
 				console.log(profile);	
-				this.storage.set('email', profile[0].email);			  				
-				this.storage.set('nombre', profile[0].nombre);			  				
-				this.storage.set('empresa', profile[0].empresa);			  				
+				
+				this.storage.set('email', profile[0].email);
+				this.storage.set('nombre', profile[0].nombre);
+				this.storage.set('empresa', profile[0].empresa);
 				this.apellido = profile[0].apellido;
 				this.email = profile[0].email;
 				this.empresa = profile[0].empresa;
 				this.nombre = profile[0].nombre;
 				this.otros = profile[0].otros;
 				this.pais = profile[0].pais;
+				
 				if(navParams.get("plan"))
 					this.plan  = navParams.get("plan");
 				else					
 					this.plan = profile[0].plan;
+
 				if(!profile[0].producciones)
 					this.producciones = [];
+				
 				else{
 					this.producciones = profile[0].producciones;
 					for(var i = 0;i<this.producciones.length;i++){
@@ -96,15 +104,16 @@ export class Profile {
 				this.telefono = profile[0].telefono;
 				this.uso = profile[0].uso;
 				this.key = profile[0].$key;
+				
 				loader.dismiss();                
 			},
 			err=>{
-			loader.dismiss();		
+				loader.dismiss();		
 			});
 		})
 	}
 
-	showAlert(message,title) {
+	showAlert(message, title) {
 		let alert = this.alertCtrl.create({
 		title: title,
 		subTitle: message,
@@ -163,13 +172,16 @@ export class Profile {
 	}
 
 	save(){
+
 		console.log(this.producciones);
 
 		let loader = this.loadingCtrl.create({
         	content: 'Please wait...'			
       	})
-      	loader.present();
-		  this.email = this.email.toLowerCase();
+
+		loader.present();
+		this.email = this.email.toLowerCase();
+		
 		this.firebaseProvider.updateProfile(
 			this.apellido,
 			this.email,
@@ -187,9 +199,9 @@ export class Profile {
 		)
 
 		loader.dismiss();
-		this.showAlert("Sus datos se guardaron con exito","Perfecto");
-	}
 
+		this.showAlert("Sus datos se guardaron con exito", "Perfecto");
+	}
 
 
 	onSelectPlan(id){

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ModalController, IonicPage, NavController,LoadingController, NavParams } from 'ionic-angular';
-import {ModalComentary} from '../modal-comentary/modal-comentary';
-import {FirebaseProvider} from '../../app/firebase.provider';
+import { ModalController, IonicPage, NavController, LoadingController, NavParams } from 'ionic-angular';
+import { ModalComentary } from '../modal-comentary/modal-comentary';
+import { FirebaseProvider } from '../../app/firebase.provider';
 import { Storage } from '@ionic/storage';
-import {History} from '../history/history';
-import {HistoryDetail}from '../history-detail/history-detail';
+import { History } from '../history/history';
+import { HistoryDetail } from '../history-detail/history-detail';
 /**
  * Generated class for the HistoryDetail page.
  *
@@ -13,57 +13,58 @@ import {HistoryDetail}from '../history-detail/history-detail';
  */
 @IonicPage()
 @Component({
-  selector: 'page-comentary',
-  templateUrl: 'comentary.html',
+	selector: 'page-comentary',
+	templateUrl: 'comentary.html',
 })
 export class Comentary {
-  history: any;
-  comentarios: any;
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public loadingCtrl: LoadingController,
-              public firebaseProvider:FirebaseProvider,
-              public storage: Storage, 
-              public modalCtrl: ModalController) {
-    let loader = this.loadingCtrl.create({
-        	content: 'Please wait...'			
-      	})
-      	loader.present();
-        this.storage.get('email').then((email) => {
-          this.firebaseProvider.getComentary(email).subscribe(comentarios =>{
-            this.comentarios = comentarios.reverse();;
-            console.log(this.comentarios)
-            loader.dismiss();  
-          },
-          err=>{
-          loader.dismiss();		
-          });
-        })
+	cotizacion: any;
+	comentarios: any;
 
+	constructor(public navCtrl: NavController,
+		public navParams: NavParams,
+		public loadingCtrl: LoadingController,
+		public firebaseProvider: FirebaseProvider,
+		public storage: Storage,
+		public modalCtrl: ModalController) {
 
-    console.log(navParams.get('history'));
-    this.history = navParams.get('song');
-  }
+		this.cotizacion = navParams.get('cotizacion');
+		console.log(this.cotizacion);
 
-  openModal() {
-    console.log("abri modal")
-    let modal = this.modalCtrl.create(ModalComentary);
-    modal.present();
-        modal.onDidDismiss((data)=>{
-          if(data)
-            this.navCtrl.setRoot(History);
-    }) 
+		let loader = this.loadingCtrl.create({
+			content: 'Please wait...'
+		})
 
-  }
+		loader.present();
 
-  back(){    
-    this.navCtrl.setRoot(History)
-  }
+		this.storage.get('email').then((email) => {
+			this.firebaseProvider.getConsulta(email).subscribe(comentarios => {
+				this.comentarios = comentarios.reverse();;
+				console.log(this.comentarios)
+				loader.dismiss();
+			},
+				err => {
+					loader.dismiss();
+				});
+		})
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HistoryDetail');
-  }
+	openModal() {
+		console.log("abri modal")
+		let modal = this.modalCtrl.create(ModalComentary, { 'origen': this.navParams.get('origen'), 'song': this.cotizacion.artista + ' - ' + this.cotizacion.cancion });
+		modal.present();
+		modal.onDidDismiss((data) => {
+			if (data)
+				this.navCtrl.setRoot(History);
+		})
 
+	}
 
+	back() {
+		this.navCtrl.setRoot(History)
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad HistoryDetail');
+	}
 
 }

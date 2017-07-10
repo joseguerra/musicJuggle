@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color='navbarColor'>
-    <ion-title>{{history.cancion}}</ion-title>
+    <ion-title>{{cotizacion.cancion}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,8 +16,8 @@
 <ion-content padding>
 
 	<div class="d1" padding-left>
-		<p class="title-3">{{history.cancion}}</p>
-		<p>{{history.artista}}</p>
+		<p class="title-3">{{cotizacion.cancion}}</p>
+		<p>{{cotizacion.artista}}</p>
 	</div>
 
 	<button ion-button class='default-button' block (click)="goComentary()">{{ 'LEAVE_A_COMMENT' | translate }}</button>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController } from 'ionic-angular';
 import { Song } from '../song/song';
-import {FirebaseProvider} from '../../app/firebase.provider';
+import { FirebaseProvider } from '../../app/firebase.provider';
 /**
  * Generated class for the TopTen page.
  *
